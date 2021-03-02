@@ -1,0 +1,4 @@
+Development is done using Domain Driven Development(DDD).
+
+
+Naming Strategy is given by Domain to which the Pojos belog to.
