@@ -22,9 +22,9 @@ public class MinutesOfMeetingApplication {
 		SpringApplication.run(MinutesOfMeetingApplication.class, args);
 	}
 
-//	@Bean
-//	public ModelMapper createModelMapper() {
-//		ModelMapper mapper = new ModelMapper();
+	@Bean
+	public ModelMapper createModelMapper() {
+		ModelMapper mapper = new ModelMapper();
 //		mapper.addMappings(new PropertyMap<OrganizationMemberEntity, MemberDto>() {
 //
 //			@Override
@@ -43,7 +43,7 @@ public class MinutesOfMeetingApplication {
 //
 //			}
 //		});
-		
+
 //		mapper.addMappings(new PropertyMap<MomHeadingEntity, MomHeadingDTO>() {
 //
 //			@Override
@@ -54,7 +54,7 @@ public class MinutesOfMeetingApplication {
 //			}
 //		});
 //
-//		return mapper;
-//	}
+		return mapper;
+	}
 
 }

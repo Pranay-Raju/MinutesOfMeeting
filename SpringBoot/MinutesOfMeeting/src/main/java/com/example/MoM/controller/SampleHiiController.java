@@ -15,7 +15,7 @@ public class SampleHiiController {
 		return "Hi!! welcome";
 		
 	}
-    @PostMapping("/hello")
+    @PostMapping("/hello1")
 	public  loginCredentials Hello(@RequestBody loginCredentials dto) {
     	System.out.println(dto);
 		return dto;
