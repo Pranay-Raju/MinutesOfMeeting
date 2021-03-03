@@ -1,9 +1,17 @@
 package com.example.MoM;
 
+import java.util.stream.Stream;
+
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
+import org.modelmapper.spi.MappingContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.example.MoM.dto.OrganizationMemberDto;
+import com.example.MoM.entity.OrganizationMemberEntity;
 
 @SpringBootApplication
 public class MinutesOfMeetingApplication {
@@ -15,14 +23,23 @@ public class MinutesOfMeetingApplication {
 	@Bean
 	public ModelMapper createModelMapper() {
 		ModelMapper mapper = new ModelMapper();
-//		mapper.addMappings(new PropertyMap<OrganizationMemberEntity, OrganizationMemberDto>() {
-//
-//			@Override
-//			protected void configure() {
-//				map().setOrganisationName(source.getOrganizationEntity().getOrganizationName());
-//
-//			}
-//		});
+		
+		mapper.addMappings(new PropertyMap<OrganizationMemberEntity, OrganizationMemberDto>() {
+
+			@Override
+			protected void configure() {
+//				Stream.of((map())).forEach(s -> {
+//					s.setOrganisationName(source.getOrganizationEntity().getOrganizationName());
+//				});
+
+//				using(converter -> {
+				map().setOrganisationName(source.getOrganizationEntity().getOrganizationName());
+//				map().set
+					
+//				});
+
+			}
+		});
 //
 //		mapper.addMappings(new PropertyMap<OrganizationEntity, OrganizationDto>() {
 //
