@@ -11,7 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class MemberDto {
+public class OrganizationMemberDto {
 
 	private int memberId;
 	private String name;

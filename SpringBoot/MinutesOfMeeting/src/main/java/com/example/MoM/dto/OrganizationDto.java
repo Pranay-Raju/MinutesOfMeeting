@@ -21,7 +21,7 @@ public class OrganizationDto {
 	private String organizationDomain;
 	private String organizationMobileNo;
 	private String organizationAddress;
-	private List<MemberDto> organizationMembers;
+	private List<OrganizationMemberDto> organizationMembers;
 	private List<MeetingDto> organizationMeetings;
 
 }

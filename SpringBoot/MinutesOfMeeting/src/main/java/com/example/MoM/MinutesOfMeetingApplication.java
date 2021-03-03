@@ -1,19 +1,9 @@
 package com.example.MoM;
 
-import java.util.ArrayList;
-
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-//import com.example.MoM.dto.MemberDto;
-//import com.example.MoM.dto.MomHeadingDTO;
-//import com.example.MoM.dto.OrganizationDto;
-import com.example.MoM.entity.MomHeadingEntity;
-import com.example.MoM.entity.OrganizationEntity;
-import com.example.MoM.entity.OrganizationMemberEntity;
 
 @SpringBootApplication
 public class MinutesOfMeetingApplication {
@@ -25,7 +15,7 @@ public class MinutesOfMeetingApplication {
 	@Bean
 	public ModelMapper createModelMapper() {
 		ModelMapper mapper = new ModelMapper();
-//		mapper.addMappings(new PropertyMap<OrganizationMemberEntity, MemberDto>() {
+//		mapper.addMappings(new PropertyMap<OrganizationMemberEntity, OrganizationMemberDto>() {
 //
 //			@Override
 //			protected void configure() {
@@ -39,7 +29,7 @@ public class MinutesOfMeetingApplication {
 //			@Override
 //			protected void configure() {
 //				OrganizationDto dto = map();
-//				dto.setOrganizationMembers(new ArrayList<MemberDto>());
+//				dto.setOrganizationMembers(new ArrayList<OrganizationMemberDto>());
 //
 //			}
 //		});
