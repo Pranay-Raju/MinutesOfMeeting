@@ -1,6 +1,5 @@
 package com.example.MoM.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +21,6 @@ public class OrganizationDto {
 	private String organizationMobileNo;
 	private String organizationAddress;
 	private List<OrganizationMemberDto> organizationMembers;
-	private List<MeetingDto> organizationMeetings;
+	private List<OrganizationMeetingDto> organizationMeetings;
 
 }

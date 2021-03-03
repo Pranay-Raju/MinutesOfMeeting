@@ -15,15 +15,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class MeetingDto {
+public class OrganizationMeetingDto {
 
-	private int meetingId;
-	private String name;
+	private int id;
+	private String meetingName;
 	private String organizationName;
-	private MemberDto facilitator;
+	private OrganizationMemberDto facilitator;
 	private Date startDateAndTime;
 	private Date endDateAndTime;
-	private List<MemberDto> attendees;
+	private List<OrganizationMemberDto> attendees;
 	private List<MomHeadingDTO> headings;
 
 }
