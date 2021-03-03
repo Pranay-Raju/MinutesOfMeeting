@@ -1,0 +1,19 @@
+<div class="container" align="center">
+    <fieldset>
+        <legend>organization Registration</legend>
+    </fieldset>
+    <form #regForm="ngForm" class="form-group" (ngSubmit)="registeruser(regForm.value)">
+        <!-- <input type="number" class="form-group" placeholder="empId"    name="empId"    ngModel /> <br/> -->
+        <input type="text" class="form-group" placeholder="OrgName" name="OrgName" ngModel /> <br/>
+        <input type="text" class="form-group" placeholder="OrgDomain" name="OrgDomain" ngModel /> <br/>
+        <input type="text" class="form-group" placeholder="OrgMobileNumber" name="OrgMobileNumber" ngModel /> <br/>
+        <input type="text" class="form-group" placeholder="OrgAddress" name="OrgAddress" ngModel /> <br/>
+        <!-- <input type="text" class="form-group" placeholder="OrgMembers" name="OrgMembers" ngModel /> <br/>
+        <input type="text" class="form-group" placeholder="OrgMeetings" name="OrgMeetings" ngModel /> <br/> -->
+
+
+
+
+        <button class="btn btn-primary">Register</button>
+    </form>
+</div>
