@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.MoM.dto.MeetingDto;
-import com.example.MoM.dto.MemberDto;
+import com.example.MoM.dto.OrganizationMeetingDto;
+import com.example.MoM.dto.OrganizationMemberDto;
 import com.example.MoM.dto.MomHeadingDTO;
 import com.example.MoM.dto.OrganizationDto;
 import com.example.MoM.entity.MomHeadingEntity;
@@ -212,15 +212,15 @@ public class Sample {
 		// mapping to respective Dtos to transfer to front end
 		OrganizationDto organizationDto = mapper.map(organization, OrganizationDto.class);
 
-		MemberDto memberDto1 = mapper.map(memberEntity1, MemberDto.class);
-		MemberDto memberDto2 = mapper.map(memberEntity2, MemberDto.class);
+		OrganizationMemberDto memberDto1 = mapper.map(memberEntity1, OrganizationMemberDto.class);
+		OrganizationMemberDto memberDto2 = mapper.map(memberEntity2, OrganizationMemberDto.class);
 
-		MeetingDto meetingDto = mapper.map(meeting, MeetingDto.class);
+		OrganizationMeetingDto meetingDto = mapper.map(meeting, OrganizationMeetingDto.class);
 
 		organizationDto.getOrganizationMembers().add(memberDto1);
 		organizationDto.getOrganizationMembers().add(memberDto2);
 
-		organizationDto.setOrganizationMeetings(new ArrayList<MeetingDto>());
+		organizationDto.setOrganizationMeetings(new ArrayList<OrganizationMeetingDto>());
 		organizationDto.getOrganizationMeetings().add(meetingDto);
 
 		MomHeadingDTO headingdto = mapper.map(heading1, MomHeadingDTO.class);

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dto.loginCredentials;
+import com.dto.LoginCredentials;
 
 @RestController
 public class SampleHiiController {
@@ -16,7 +16,7 @@ public class SampleHiiController {
 		
 	}
     @PostMapping("/hello1")
-	public  loginCredentials Hello(@RequestBody loginCredentials dto) {
+	public  LoginCredentials Hello(@RequestBody LoginCredentials dto) {
     	System.out.println(dto);
 		return dto;
 	}

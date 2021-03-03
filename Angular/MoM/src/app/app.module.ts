@@ -7,6 +7,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { MemeberComponent } from './memeber/memeber.component';
+import {  RouterModule, Routes } from '@angular/router';
+
+import {HttpClientModule} from '@angular/common/http';
+
+const routes: Routes = [
+  {path:'',component:LoginComponent}
+];
 
 @NgModule({
   declarations: [
@@ -18,7 +25,9 @@ import { MemeberComponent } from './memeber/memeber.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
