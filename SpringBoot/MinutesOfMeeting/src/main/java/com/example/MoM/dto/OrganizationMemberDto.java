@@ -1,5 +1,7 @@
 package com.example.MoM.dto;
 
+import javax.persistence.Column;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ public class OrganizationMemberDto {
 	private String role;
 	private String address;
 	private String gender;
+	@Column(unique = true)
 	private String loginId;
 	private String password;
 

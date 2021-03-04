@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dto.LoginCredentials;
+import com.example.MoM.dto.LoginCredentials;
 
 @RestController
 public class SampleHiiController {

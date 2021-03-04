@@ -1,0 +1,49 @@
+<h1 align="center">
+    Members Data</h1>
+
+<div class="container">
+    <table class="table table-bordered table-striped table-hover table-sm">
+        <thead>
+            <tr class="bg-info text-white" align="center">
+                <th>MemberId</th>
+                <th> MemberName</th>
+                <th> organisation</th>
+                <th> mailId</th>
+                <th> mobileNo</th>
+                <th> role</th>
+                <th> address</th>
+                <th> gender</th>
+                <th> LoginId</th>
+                <th> Password</th>
+                <th> Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let member of members' align='center'>
+                <td>{{member.memberId}}</td>
+                <td>{{member.name | uppercase}}</td>
+                <td>{{member.organisation}}</td>
+                <td>{{member.mailId |lowercase}}</td>
+                <td>{{member.mobileNo}}</td>
+                <td>{{member.role}}</td>
+                <td>{{member.address |uppercase}}</td>
+                <td>{{member.gender |uppercase }}</td>
+                <td>{{member.loginId }}</td>
+                <td>{{member.password}}</td>
+
+
+                <td>
+                    <a href="">
+                        <div class="glyphicon glyphicon-pencil"></div>
+                    </a>
+                </td>
+                <td>
+                    <a href="">
+                        <div class="glyphicon glyphicon-trash"></div>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

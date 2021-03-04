@@ -1,4 +1,4 @@
-package com.dto;
+package com.example.MoM.dto;
 
 import org.springframework.web.bind.annotation.PostMapping;
 
