@@ -14,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MoM.dto.OrganizationMemberDto;
-import com.example.MoM.dto.OrganizationMemberDto;
-import com.example.MoM.entity.OrganizationMemberEntity;
 import com.example.MoM.entity.OrganizationMemberEntity;
 import com.example.MoM.repositories.OrganizationMemberRepository;
-import com.example.MoM.repositories.OrganizationRepository;
 
 @RestController
 @RequestMapping("/member")

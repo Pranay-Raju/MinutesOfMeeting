@@ -29,7 +29,7 @@ public class MinutesOfMeetingApplication {
 //				});
 
 //				using(converter -> {
-				map().setOrganisationName(source.getOrganizationEntity().getOrganizationName());
+				map().setOrganizationName(source.getOrganizationEntity().getOrganizationName());
 //				map().set
 					
 //				});

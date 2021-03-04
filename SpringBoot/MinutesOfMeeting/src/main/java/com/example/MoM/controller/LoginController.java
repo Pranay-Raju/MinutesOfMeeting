@@ -22,9 +22,11 @@ public class LoginController {
 
 	@PostMapping("/userWithCredentials")
 	public OrganizationMemberDto fetchUserWithCredentials(@RequestBody LoginCredentials credentials) {
+		
 		OrganizationMemberEntity entity = memberRepository
 				.findByLoginIdAndPassword(credentials.getLoginId(), credentials.getPassword())
 				.orElse(new OrganizationMemberEntity());
+		
 		OrganizationMemberDto dto = mapper.map(entity, OrganizationMemberDto.class);
 		System.out.println(credentials);
 		return dto;
