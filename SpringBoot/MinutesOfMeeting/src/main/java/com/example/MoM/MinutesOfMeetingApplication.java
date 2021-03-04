@@ -19,44 +19,16 @@ public class MinutesOfMeetingApplication {
 	@Bean
 	public ModelMapper createModelMapper() {
 		ModelMapper mapper = new ModelMapper();
-		
+
 		mapper.addMappings(new PropertyMap<OrganizationMemberEntity, OrganizationMemberDto>() {
 
 			@Override
 			protected void configure() {
-//				Stream.of((map())).forEach(s -> {
-//					s.setOrganisationName(source.getOrganizationEntity().getOrganizationName());
-//				});
-
-//				using(converter -> {
 				map().setOrganizationName(source.getOrganizationEntity().getOrganizationName());
-//				map().set
-					
-//				});
-
 			}
 		});
-//
-//		mapper.addMappings(new PropertyMap<OrganizationEntity, OrganizationDto>() {
-//
-//			@Override
-//			protected void configure() {
-//				OrganizationDto dto = map();
-//				dto.setOrganizationMembers(new ArrayList<OrganizationMemberDto>());
-//
-//			}
-//		});
-
-//		mapper.addMappings(new PropertyMap<MomHeadingEntity, MomHeadingDTO>() {
-//
-//			@Override
-//			protected void configure() {
-//				MomHeadingDTO dto = map();
-//				dto.setParent_heading_id(source.getParentHeading().getId());
-//
-//			}
-//		});
-//
+		
+		
 		return mapper;
 	}
 

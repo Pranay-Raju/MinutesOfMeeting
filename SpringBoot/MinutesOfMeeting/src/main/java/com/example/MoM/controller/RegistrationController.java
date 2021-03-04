@@ -29,14 +29,21 @@ public class RegistrationController {
 	OrganizationMemberRepository organizationMemberRepository;
 
 	@PostMapping("/register")
-	public OrganizationDto regiser(@RequestBody RegisterFormDto regisrerForm) {
-//		System.out.println(regisrerForm);
+	public OrganizationDto regiser(@RequestBody RegisterFormDto registerForm) {
 		
-		OrganizationDto orgDto = mapper.map(regisrerForm, OrganizationDto.class);
-		OrganizationMemberDto memberDto = mapper.map(regisrerForm, OrganizationMemberDto.class);
+		OrganizationDto orgDto = mapper.map(registerForm, OrganizationDto.class);
+		OrganizationMemberDto memberDto = mapper.map(registerForm, OrganizationMemberDto.class);
 
-		OrganizationEntity orgEntity = mapper.map(regisrerForm, OrganizationEntity.class);
-		OrganizationMemberEntity memberEntity = mapper.map(regisrerForm, OrganizationMemberEntity.class);
+		OrganizationEntity orgEntity = mapper.map(registerForm, OrganizationEntity.class);
+		OrganizationMemberEntity memberEntity = mapper.map(registerForm, OrganizationMemberEntity.class);
+		
+		if(!memberDto.getName().equals(memberEntity.getMemberName())) {
+			memberEntity.setMemberName(memberDto.getName());
+		}
+		if(!memberDto.getRole().equals(memberEntity.getOrganizationRole())) {
+			memberEntity.setOrganizationRole(memberDto.getRole());
+		}
+		
 		memberEntity.setOrganizationEntity(orgEntity);
 		orgEntity.setOrganizationMembers(new ArrayList<OrganizationMemberEntity>());
 		orgEntity.getOrganizationMembers().add(memberEntity);
@@ -46,9 +53,6 @@ public class RegistrationController {
 		
 		orgEntity2 = organizationRepository.findById(orgEntity2.getOrganizationId()).orElse(orgEntity2);
 		
-
-		System.out.println(orgDto);
-		System.out.println(memberDto);
 		
 		OrganizationDto orgDto2 = mapper.map(orgEntity2, OrganizationDto.class);
 		return orgDto2;

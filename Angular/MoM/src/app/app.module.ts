@@ -11,9 +11,14 @@ import {  RouterModule, Routes } from '@angular/router';
 
 import {HttpClientModule} from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ShowOrgMembersComponent } from './show-org-members/show-org-members.component';
 
 const routes: Routes = [
-  {path:'',component:LoginComponent}
+  {path:'',component:LoginComponent},
+  {path:'login',component:LoginComponent},
+  {path:'registration',component:RegisterComponent},
+  {path:'showMembers',component:ShowOrgMembersComponent}
 ];
 
 @NgModule({
@@ -22,7 +27,9 @@ const routes: Routes = [
     LoginComponent,
     OrganizationComponent,
     MemeberComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent,
+    ShowOrgMembersComponent
   ],
   imports: [
     BrowserModule,

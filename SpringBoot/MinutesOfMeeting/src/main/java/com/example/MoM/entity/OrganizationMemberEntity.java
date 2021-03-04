@@ -21,7 +21,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = {"organizationEntity","facilitatedMeetings","attendedMeetings"})
 @Entity(name = "member")
 public class OrganizationMemberEntity {
 
