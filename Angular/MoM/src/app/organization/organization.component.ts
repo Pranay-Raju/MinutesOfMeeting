@@ -12,8 +12,8 @@ export class OrganizationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registeruser(regForm: any) {
-    console.log("User Registration Details:");
+  registerOrganization(regForm: any) {
+    console.log("Org Registration Details:");
     console.log(regForm);
 
 

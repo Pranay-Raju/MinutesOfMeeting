@@ -13,8 +13,8 @@ export class MemeberComponent implements OnInit {
   }
 
   
-registeruser(regForm: any) {
-  console.log("User Registration Details:");
+registerMember(regForm: any) {
+  console.log("Member Registration Details:");
   console.log(regForm); 
 
 

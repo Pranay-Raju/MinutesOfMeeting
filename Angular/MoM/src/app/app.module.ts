@@ -10,6 +10,7 @@ import { MemeberComponent } from './memeber/memeber.component';
 import {  RouterModule, Routes } from '@angular/router';
 
 import {HttpClientModule} from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent}
@@ -20,7 +21,8 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     OrganizationComponent,
-    MemeberComponent
+    MemeberComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
