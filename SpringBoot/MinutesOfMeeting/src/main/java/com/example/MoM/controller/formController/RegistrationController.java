@@ -1,4 +1,4 @@
-package com.example.MoM.controller;
+package com.example.MoM.controller.formController;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MoM.dto.OrganizationDto;
 import com.example.MoM.dto.OrganizationMemberDto;
-import com.example.MoM.dto.RegisterFormDto;
+import com.example.MoM.dto.formDto.RegisterFormDto;
 import com.example.MoM.entity.OrganizationEntity;
 import com.example.MoM.entity.OrganizationMemberEntity;
 import com.example.MoM.repositories.OrganizationMemberRepository;

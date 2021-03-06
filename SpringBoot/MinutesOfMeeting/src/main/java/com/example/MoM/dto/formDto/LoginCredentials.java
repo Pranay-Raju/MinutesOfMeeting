@@ -1,6 +1,4 @@
-package com.example.MoM.dto;
-
-import org.springframework.web.bind.annotation.PostMapping;
+package com.example.MoM.dto.formDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

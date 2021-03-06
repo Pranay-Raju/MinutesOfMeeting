@@ -1,4 +1,4 @@
-package com.example.MoM.dto;
+package com.example.MoM.dto.formDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

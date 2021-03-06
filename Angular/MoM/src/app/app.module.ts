@@ -13,12 +13,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShowOrgMembersComponent } from './show-org-members/show-org-members.component';
+import { ShowOrgMeetingsComponent } from './show-org-meetings/show-org-meetings.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
+  {path:'',component:HomePageComponent},
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegisterComponent},
-  {path:'showMembers',component:ShowOrgMembersComponent}
+  {path:'showMembers',component:ShowOrgMembersComponent},
+  {path:'showMeetings',component:ShowOrgMeetingsComponent}
 ];
 
 @NgModule({
@@ -29,7 +32,9 @@ const routes: Routes = [
     MemeberComponent,
     RegisterComponent,
     NavbarComponent,
-    ShowOrgMembersComponent
+    ShowOrgMembersComponent,
+    ShowOrgMeetingsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

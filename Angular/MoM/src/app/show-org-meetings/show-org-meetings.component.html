@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+
+</head>
+
+<h1 align="center">Meetings Data</h1>
+
+<div class="container">
+    <table class="table table-bordered table-striped table-hover table-sm">
+        <thead>
+            <tr class="bg-info text-white" align="center">
+                <th>MeetingId</th>
+                <th> MeetingName</th>
+
+
+                <th> Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let meeting of meetings' align='center'>
+                <td>{{meeting.meetingId}}</td>
+                <td>{{meeting.name | uppercase}}</td>
+
+
+
+                <td><button (click)="ShowEditPopup(meeting)"><div class="glyphicon glyphicon-pencil"></div></button></td>
+                <td><button (click)="deleteMeeting(meeting)"><div class="glyphicon glyphicon-trash"></div></button></td>
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>
