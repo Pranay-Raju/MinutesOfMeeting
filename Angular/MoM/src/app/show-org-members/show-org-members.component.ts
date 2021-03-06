@@ -10,7 +10,10 @@ export class ShowOrgMembersComponent implements OnInit {
 
   members: any;
 
-  organization: any;
+  orgMembers: any;
+
+  // organization: any;
+  organizationId: any;
   organizations: any;
 
   constructor(public organizationService:OrganizationService) {
@@ -41,10 +44,19 @@ export class ShowOrgMembersComponent implements OnInit {
         address: 'Sec', gender: 'F', loginId: 'lavanya123', password: 'password'
       }
     ]
-    organizationService.getAllOrganizations().subscribe((data:any)=> {console.log(data)});
+    organizationService.getAllOrganizations().subscribe((data:any)=> {console.log(data), this.organizations = data;});
   }
 
   ngOnInit(): void {
+  }
+
+  getEmpById(orgId:any){
+    console.log("Will fetch org with ID " + orgId);
+
+  }
+
+  showEditPop(){
+
   }
 
 }

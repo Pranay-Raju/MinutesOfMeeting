@@ -1,5 +1,18 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+
 <h1 align="center">
     Members Data</h1>
+
+<div align="center">
+    <select name="organizationId" class="form-group" ngModel>
+        <option value={{organization.id}} *ngFor="let organization of organizations"> {{organization.organizationName}}
+        </option>
+    </select>
+
+    <button (click)="getEmpById(organizationId)" class="btn btn-primary">Show Members</button>
+</div>
 
 <div class="container">
     <table class="table table-bordered table-striped table-hover table-sm">
@@ -13,8 +26,8 @@
                 <th> role</th>
                 <th> address</th>
                 <th> gender</th>
-                <th> LoginId</th>
-                <th> Password</th>
+                <!-- <th> LoginId</th>
+                <th> Password</th> -->
                 <th> Edit</th>
                 <th>Delete</th>
             </tr>
@@ -29,19 +42,23 @@
                 <td>{{member.role}}</td>
                 <td>{{member.address |uppercase}}</td>
                 <td>{{member.gender |uppercase }}</td>
-                <td>{{member.loginId }}</td>
-                <td>{{member.password}}</td>
+                <!-- <td>{{member.loginId }}</td>
+                <td>{{member.password}}</td> -->
 
 
                 <td>
-                    <a href="">
+                    <!-- <a href=""> -->
+                    <button (click)="showEditPop()">
                         <div class="glyphicon glyphicon-pencil"></div>
-                    </a>
+                    </button>
+                    <!-- </a> -->
                 </td>
                 <td>
-                    <a href="">
+                    <!-- <a href=""> -->
+                    <button (click)="showEditPop()">
                         <div class="glyphicon glyphicon-trash"></div>
-                    </a>
+                    </button>
+                    <!-- </a> -->
                 </td>
             </tr>
         </tbody>
