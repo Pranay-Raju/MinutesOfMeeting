@@ -16,4 +16,8 @@ export class LoginService {
   public loginAsUser(userCred: any):Observable<any> {
     return this.httpClient.post("/userWithCredentials",userCred)
   }
+
+  public getUserLoggedIn(){
+    return true;
+  }
 }

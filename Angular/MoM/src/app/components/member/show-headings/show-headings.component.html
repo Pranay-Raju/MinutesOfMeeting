@@ -1,0 +1,85 @@
+<div>
+    <table align="center" border="2">
+
+        <ng-container *ngFor="let item of dataList;let i = index">
+            <tr *ngIf="i==0">
+                <th>
+                    {{getKeys(item.Employee)[0]}}
+                </th>
+                <th>
+                    {{getKeys(item.Employee)[1]}}
+                </th>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    {{item.Employee.Name.First}} {{item.Employee.Name.Last}}
+                </td>
+                <td>
+                    {{getKeys(item.Employee.Address)[0]}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.Employee.Address.HouseNo}}, {{item.Employee.Address.State}}, {{item.Employee.Address.Country}}
+                </td>
+            </tr>
+        </ng-container>
+
+    </table>
+</div>
+
+
+
+<table align="center" border="2">
+    <thead>
+        <th>
+            Name
+        </th>
+        <th>
+            MoM SubHeading and points
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let heading of meeting.headings">
+            <td> {{heading.value}}</td>
+            <td>
+                <ul *ngFor="let subheading of heading.subHeadings">
+                    <li>{{subheading.value}}</li>
+                    <span>
+                        <ul *ngFor="let point of subheading.points">
+                            <li>{{point.info}}</li>
+                        </ul>
+                    </span>
+                </ul>
+
+            </td>
+            <!-- <td>
+                <ul *ngFor="let subheading of heading.subHeadings">
+                    <li>{{subheading.value}}</li>
+                    <span>
+                        <ul *ngFor="let point of subheading.points">
+                            <li>{{point.info}}</li>
+                        </ul>
+                    </span>
+                </ul>
+
+            </td> -->
+
+        </tr>
+
+    </tbody>
+</table>
+<hr>
+
+<span *ngFor="let heading of meeting.headings">
+    <h1> {{heading.value}}</h1>
+    <ul *ngFor="let subheading of heading.subHeadings">
+        <li>{{subheading.value}}</li>
+        <span>
+            <ul *ngFor="let point of subheading.points">
+                <li>{{point.info}}</li>
+            </ul>
+        </span>
+</ul>
+
+</span>

@@ -10,7 +10,11 @@
             <input type="text" class="form-group" placeholder="Organazation" name="organizationName" ngModel /> <br />
             <input type="text" class="form-group" placeholder="MobileNumber" name="mobileNo" ngModel /> <br />
             <input type="text" class="form-group" placeholder="Address" name="address" ngModel /> <br />
-            <input type="text" class="form-group" placeholder="Role" name="role" ngModel /> <br />
+            <!-- <input type="text" class="form-group" placeholder="Role" name="role" ngModel /> <br /> -->
+            <select name="role" class="form-group" ngModel>
+                <option value={{role}} *ngFor="let role of userRoles"> {{role}}
+                </option>
+            </select><br/>
             <input type="text" class="form-group" placeholder="Gender" name="gender" ngModel /> <br />
             <input type="text" class="form-group" placeholder="loginId" name="loginId" ngModel /> <br />
             <input type="password" class="form-group" placeholder="password" name="password" ngModel /> <br />
@@ -27,6 +31,10 @@
             <button class="btn btn-primary">Register</button>
         </form>
 
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <div class="alert-success invalidMsg">{{ registerSuccessMsg }}</div>
+        </div>
 
 
     </div>

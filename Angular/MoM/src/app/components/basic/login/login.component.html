@@ -14,6 +14,17 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
 
+        <!-- Icon -->
+
+        <div class="fadeIn first">
+            <h2 align="center"><b>Loginpage </b> </h2>
+        </div>
+        <div class="fadeIn first">
+            <div class="alert-danger invalidMsg">{{ invalidMessage }}</div>
+        </div>
+
+
+
 
 
         <form #loginForm="ngForm" (ngSubmit)="submitLoginForm(loginForm.value)" novalidate>
