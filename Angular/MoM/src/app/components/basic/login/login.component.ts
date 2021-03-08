@@ -3,6 +3,7 @@ import { LoginService } from '../../../services/login.service';
 import { delay } from 'rxjs/operators';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   invalidMessage: any;
 
 
-  constructor(public loginService: LoginService, public userService: UserService) {
+  constructor(public loginService: LoginService, public userService: UserService,public router:Router) {
 
   }
 
@@ -38,6 +39,15 @@ export class LoginComponent implements OnInit {
       this.userService.setUserLoggedIn(true);
       this.userService.setUser(t);
       this.userService.setUserRole(t.role);
+      if(t.role === "admin"){
+      this.router.navigate(['showMembers']);
+    }
+    else if(t.role ==="facilitator"){
+      this.router.navigate(['showMeetings']);
+    }
+    else if(t.role === "member"){
+      this.router.navigate(['showHeadings'])
+    }
     }
   }
 

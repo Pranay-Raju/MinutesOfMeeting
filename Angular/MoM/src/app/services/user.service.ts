@@ -22,6 +22,9 @@ export class UserService {
     this.userLoggedIn = false;
     this.userRole = "user";
     this.userRoles = ["admin", "facilitator", "member"];
+    this.user = {
+      "name": "XYZ"
+    }
   }
 
   getUserLoggedIn() {

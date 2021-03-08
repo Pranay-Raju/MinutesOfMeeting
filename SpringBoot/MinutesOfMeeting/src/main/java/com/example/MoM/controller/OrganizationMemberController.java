@@ -46,14 +46,25 @@ public class OrganizationMemberController {
 	}
 
 	@GetMapping("/byId/{id}")
-	public OrganizationMemberDto save(@PathVariable("id") int id) {
-		OrganizationMemberEntity entity = organizationMemberRepository.findById(id).orElse(new OrganizationMemberEntity());
+	public OrganizationMemberDto getById(@PathVariable("id") int id) {
+		OrganizationMemberEntity entity = organizationMemberRepository.findById(id)
+				.orElse(new OrganizationMemberEntity());
 		return mapper.map(entity, OrganizationMemberDto.class);
 	}
 
 	@DeleteMapping("/")
 	public void delete(@RequestBody OrganizationMemberEntity organizationMember) {
 		organizationMemberRepository.delete(organizationMember);
+	}
+
+	@GetMapping("/byOrgId/{id}")
+	public List<OrganizationMemberDto> save2(@PathVariable("id") int id) {
+		List<OrganizationMemberEntity> memberEntities = organizationMemberRepository.findAllByOrganizationId(id);
+		List<OrganizationMemberDto> orgDtos = new ArrayList<OrganizationMemberDto>();
+		for (OrganizationMemberEntity entity : memberEntities) {
+			orgDtos.add(mapper.map(entity, OrganizationMemberDto.class));
+		}
+		return orgDtos;
 	}
 
 }

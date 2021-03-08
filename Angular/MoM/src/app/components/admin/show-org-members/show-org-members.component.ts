@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberService } from 'src/app/services/member.service';
+import { UserService } from 'src/app/services/user.service';
 import { OrganizationService } from '../../../services/organization.service';
+
+declare var jQuery: any;
 
 @Component({
   selector: 'app-show-org-members',
@@ -10,52 +14,52 @@ export class ShowOrgMembersComponent implements OnInit {
 
   members: any;
 
-  orgMembers: any;
+  editMember: any;
+  editFlag: boolean;
+  createFlag: boolean;
 
-  // organization: any;
-  organizationId: any;
-  organizations: any;
+  organization: any;
 
-  constructor(public organizationService:OrganizationService) {
+  constructor(public organizationService: OrganizationService, public userService: UserService, public memberService: MemberService) {
+    this.editFlag = false;
+    this.createFlag = false;
 
-    this.members = [
-      {
-        memberId: 1, name: 'Tejaswini', organisation: 'TalentSprint', mailId: 'tejaswini@gmail.com', mobileNo: 957114125, role: 'admin',
-        address: 'Rjy', gender: 'F', loginId: 'teju123', password: 'password'
-      },
-      {
-        memberId: 2, name: 'Pranay', organisation: 'TalentSprint', mailId: 'pranay@gmail.com', mobileNo: 957458516, role: 'Facilitator',
-        address: 'Hyd', gender: 'M', loginId: 'pranay123', password: 'password'
-      },
-      {
-        memberId: 3, name: 'Rakesh', organisation: 'TalentSprint', mailId: 'rakesh@gmail.com', mobileNo: 805114125, role: 'Member',
-        address: 'sec', gender: 'M', loginId: 'rakesh123', password: 'password'
-      },
-      {
-        memberId: 4, name: 'Navya', organisation: 'TalentSprint', mailId: 'navya@gmail.com', mobileNo: 896744125, role: 'Member',
-        address: 'Kkd', gender: 'F', loginId: 'navya123', password: 'password'
-      },
-      {
-        memberId: 5, name: 'Gayathri', organisation: 'TalentSprint', mailId: 'gayathri@gmail.com', mobileNo: 45714125, role: 'Member',
-        address: 'vzg', gender: 'M', loginId: 'gayathri123', password: 'password'
-      },
-      {
-        memberId: 6, name: 'Lavanya', organisation: 'TalentSprint', mailId: 'lavanya@gmail.com', mobileNo: 68944125, role: 'Member',
-        address: 'Sec', gender: 'F', loginId: 'lavanya123', password: 'password'
-      }
-    ]
-    organizationService.getAllOrganizations().subscribe((data:any)=> {console.log(data), this.organizations = data;});
-  }
 
-  ngOnInit(): void {
-  }
 
-  getEmpById(orgId:any){
-    console.log("Will fetch org with ID " + orgId);
+    this.editMember = {
+      name: '', organisation: '', mailId: '', mobileNo: '', role: '', address: '', gender: '', loginId: '', password: ''
+    };
+
 
   }
 
-  showEditPop(){
+  async ngOnInit() {
+    this.organization = await this.organizationService.getOrganizationByName(this.userService.user.organizationName).toPromise();
+    console.log("Organization Details are " + JSON.stringify(this.organization));
+    this.memberService.getOrgMembers(this.organization.id).subscribe((data: any) => { this.members = data });
+  }
+
+  
+
+  showEditPop(member: any): void {
+    this.editMember = member;
+    this.editFlag = true;
+    this.createFlag = false;
+    jQuery('#empModel').modal('show');
+  }
+
+  deleteMember(member: any) {
+
+  }
+
+  updateMember(member: any) {
+
+  }
+
+  newMember() {
+    this.createFlag = true;
+    this.editFlag = false;
+    jQuery('#empModel').modal('show');
 
   }
 

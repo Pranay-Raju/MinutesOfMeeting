@@ -11,4 +11,12 @@ export class OrganizationService {
   public getAllOrganizations(){
     return this.httpClient.get('allOrganizations');
   }
+
+  public getOrganizationByName(name:string){
+    return this.httpClient.get('org/byName/' + name);
+  }
+
+  // public getOrganizationByName(name:string){
+  //   return this.httpClient.get('orgByName/' + name);
+  // }
 }

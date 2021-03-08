@@ -5,13 +5,12 @@
 
 
         <form #regForm="ngForm" class="form-group" (ngSubmit)="registerForm(regForm.value)">
-            <!-- <input type="number" class="form-group" placeholder="empId"    name="empId"    ngModel /> <br/> -->
             <input type="text" class="form-group" placeholder="Name" name="name" ngModel /> <br />
             <input type="text" class="form-group" placeholder="Organazation" name="organizationName" ngModel /> <br />
             <input type="text" class="form-group" placeholder="MobileNumber" name="mobileNo" ngModel /> <br />
             <input type="text" class="form-group" placeholder="Address" name="address" ngModel /> <br />
-            <!-- <input type="text" class="form-group" placeholder="Role" name="role" ngModel /> <br /> -->
             <select name="role" class="form-group" ngModel>
+                <option value="" selected>Select A Role</option>
                 <option value={{role}} *ngFor="let role of userRoles"> {{role}}
                 </option>
             </select><br/>
@@ -22,9 +21,6 @@
             <input type="text" class="form-group" placeholder="OrgDomain" name="organizationDomain" ngModel /> <br />
             <input type="text" class="form-group" placeholder="OrgMobileNumber" name="organizationMobileNo" ngModel /> <br />
             <input type="text" class="form-group" placeholder="OrgAddress" name="organizationAddress" ngModel /> <br />
-            <!-- <input type="text" class="form-group" placeholder="OrgMembers" name="OrgMembers" ngModel /> <br/>
-            <input type="text" class="form-group" placeholder="OrgMeetings" name="OrgMeetings" ngModel /> <br/> -->
-
 
 
 

@@ -28,7 +28,7 @@ public class LoginController {
 				.orElse(new OrganizationMemberEntity());
 		
 		OrganizationMemberDto dto = mapper.map(entity, OrganizationMemberDto.class);
-		System.out.println(credentials);
+//		System.out.println(credentials);
 		return dto;
 	}
 

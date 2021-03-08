@@ -2,65 +2,92 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 
-<h1 align="center">
-    Members Data</h1>
-
-<div align="center">
-    <select name="organizationId" class="form-group" ngModel>
-        <option value={{organization.id}} *ngFor="let organization of organizations"> {{organization.organizationName}}
-        </option>
-    </select>
-
-    <button (click)="getEmpById(organizationId)" class="btn btn-primary">Show Members</button>
-</div>
+<h1 align="center">Members Data</h1>
 
 <div class="container">
-    <table class="table table-bordered table-striped table-hover table-sm">
-        <thead>
-            <tr class="bg-info text-white" align="center">
-                <th>MemberId</th>
-                <th> MemberName</th>
-                <th> organisation</th>
-                <th> mailId</th>
-                <th> mobileNo</th>
-                <th> role</th>
-                <th> address</th>
-                <th> gender</th>
-                <!-- <th> LoginId</th>
+    <div class="modal fade" id="empModel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3> Edit Employee </h3>
+                    <span class="close" data-dismiss="modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form #regForm="ngForm">
+                        <!-- <input type="number" placeholder="empId" name="empId" [(ngModel)]="editMember.empId" /> <br /> -->
+                        <input type="text" placeholder="empName" name="name" [(ngModel)]="editMember.name" /> <br />
+                        <input type="text" placeholder="organisation" name="organisation" [(ngModel)]="editMember.organisation" /> <br />
+                        <input type="text" placeholder="mailId" name="mailId" [(ngModel)]="editMember.mailId" /> <br />
+                        <input type="text" placeholder="mobileNo" name="mobileNo" [(ngModel)]="editMember.mobileNo" /> <br />
+                        <input type="text" placeholder="role" name="role" [(ngModel)]="editMember.role" /> <br />
+                        <input type="text" placeholder="address" name="address" [(ngModel)]="editMember.address" /> <br />
+                        <input type="text" placeholder="gender" name="gender" [(ngModel)]="editMember.gender" /> <br />
+                        <input type="text" placeholder="loginId" name="loginId" [(ngModel)]="editMember.loginId" /> <br />
+                        <input type="password" placeholder="password" name="password" [(ngModel)]="editMember.password" /> <br />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button *ngIf=createFlag (click)="updateMember(editMember)" class="btn btn-primary btn-sm" data-dismiss="modal">Create
+                        Member</button>
+                    <button *ngIf=editFlag (click)="updateMember(editMember)" class="btn btn-primary btn-sm" data-dismiss="modal">Update
+                        Member</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div align="center">
+        <button (click)="newMember()" class="btn btn-primary">Create Member</button>
+    </div>
+
+    <div class="container">
+        <table class="table table-bordered table-striped table-hover table-sm">
+            <thead>
+                <tr class="bg-info text-white" align="center">
+                    <th>MemberId</th>
+                    <th> MemberName</th>
+                    <th> organisation</th>
+                    <th> mailId</th>
+                    <th> mobileNo</th>
+                    <th> role</th>
+                    <th> address</th>
+                    <th> gender</th>
+                    <!-- <th> LoginId</th>
                 <th> Password</th> -->
-                <th> Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor='let member of members' align='center'>
-                <td>{{member.memberId}}</td>
-                <td>{{member.name | uppercase}}</td>
-                <td>{{member.organisation}}</td>
-                <td>{{member.mailId |lowercase}}</td>
-                <td>{{member.mobileNo}}</td>
-                <td>{{member.role}}</td>
-                <td>{{member.address |uppercase}}</td>
-                <td>{{member.gender |uppercase }}</td>
-                <!-- <td>{{member.loginId }}</td>
+                    <th> Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let member of members' align='center'>
+                    <td>{{member.memberId}}</td>
+                    <td>{{member.name | uppercase}}</td>
+                    <td>{{member.organisation}}</td>
+                    <td>{{member.mailId |lowercase}}</td>
+                    <td>{{member.mobileNo}}</td>
+                    <td>{{member.role}}</td>
+                    <td>{{member.address |uppercase}}</td>
+                    <td>{{member.gender |uppercase }}</td>
+                    <!-- <td>{{member.loginId }}</td>
                 <td>{{member.password}}</td> -->
 
 
-                <td>
-                    <!-- <a href=""> -->
-                    <button (click)="showEditPop()">
-                        <div class="glyphicon glyphicon-pencil"></div>
-                    </button>
-                    <!-- </a> -->
-                </td>
-                <td>
-                    <!-- <a href=""> -->
-                    <button (click)="showEditPop()">
-                        <div class="glyphicon glyphicon-trash"></div>
-                    </button>
-                    <!-- </a> -->
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <td>
+                        <!-- <a href=""> -->
+                        <button (click)="showEditPop(member)">
+                            <div class="glyphicon glyphicon-pencil"></div>
+                        </button>
+                        <!-- </a> -->
+                    </td>
+                    <td>
+                        <!-- <a href=""> -->
+                        <button (click)="deleteMember(member)">
+                            <div class="glyphicon glyphicon-trash"></div>
+                        </button>
+                        <!-- </a> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

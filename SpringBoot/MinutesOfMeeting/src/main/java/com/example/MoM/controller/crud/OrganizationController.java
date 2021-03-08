@@ -1,7 +1,8 @@
-package com.example.MoM.controller;
+package com.example.MoM.controller.crud;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MoM.dto.OrganizationDto;
+import com.example.MoM.dto.orgAdmin.OrgDto;
 import com.example.MoM.entity.OrganizationEntity;
 import com.example.MoM.repositories.OrganizationRepository;
 
@@ -37,6 +39,17 @@ public class OrganizationController {
 
 		return dtos;
 	}
+	
+	@GetMapping("/byName/{name}")
+	public OrgDto getOrganizationByName(@PathVariable("name") String orgName) {
+		System.out.println("NAME IS " + orgName);
+		OrganizationEntity orgEntity = organizationRepository.findByOrganizationName(orgName).orElse(new OrganizationEntity());
+		
+		System.out.println("ENTITY IS" + orgEntity);
+		OrgDto orgDto = mapper.map(orgEntity, OrgDto.class);
+		System.out.println(orgDto);
+		return orgDto;
+	}
 
 	@PostMapping("/save")
 	public OrganizationDto save(@RequestBody OrganizationEntity organization) {
@@ -47,12 +60,13 @@ public class OrganizationController {
 	@GetMapping("/byId/{id}")
 	public OrganizationDto save(@PathVariable("id") int id) {
 		OrganizationEntity entity = organizationRepository.findById(id).orElse(new OrganizationEntity());
-		return mapper.map(entity, OrganizationDto.class);
+		OrganizationDto orgDto = mapper.map(entity, OrganizationDto.class);
+		return orgDto;
 	}
 
 	@DeleteMapping("/")
 	public void delete(@RequestBody OrganizationEntity organization) {
 		organizationRepository.delete(organization);
 	}
-
+	
 }

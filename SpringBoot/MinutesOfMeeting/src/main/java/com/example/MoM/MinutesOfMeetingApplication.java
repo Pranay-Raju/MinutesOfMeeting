@@ -6,7 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.MoM.dto.OrganizationDto;
 import com.example.MoM.dto.OrganizationMemberDto;
+import com.example.MoM.entity.OrganizationEntity;
 import com.example.MoM.entity.OrganizationMemberEntity;
 
 @SpringBootApplication
@@ -27,6 +29,8 @@ public class MinutesOfMeetingApplication {
 				map().setOrganizationName(source.getOrganizationEntity().getOrganizationName());
 			}
 		});
+		
+		
 		
 		
 		return mapper;
