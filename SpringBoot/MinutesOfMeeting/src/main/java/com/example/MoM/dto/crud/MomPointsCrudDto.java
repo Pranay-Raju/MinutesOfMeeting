@@ -1,4 +1,4 @@
-package com.example.MoM.dto;
+package com.example.MoM.dto.crud;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class MomPointsDto {
+public class MomPointsCrudDto {
 	
 	private int id;
 	private String info;

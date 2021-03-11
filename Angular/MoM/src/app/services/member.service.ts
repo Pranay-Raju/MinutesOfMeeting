@@ -12,4 +12,10 @@ export class MemberService {
     return this.httpClient.get("member/byOrgId/" + orgId);
 
   }
+
+saveMember(member:any){
+  return this.httpClient.post("memberForm/save",member);
+}
+
+
 }

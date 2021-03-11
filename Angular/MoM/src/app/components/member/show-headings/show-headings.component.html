@@ -1,48 +1,19 @@
-<div>
-    <table align="center" border="2">
-
-        <ng-container *ngFor="let item of dataList;let i = index">
-            <tr *ngIf="i==0">
-                <th>
-                    {{getKeys(item.Employee)[0]}}
-                </th>
-                <th>
-                    {{getKeys(item.Employee)[1]}}
-                </th>
-            </tr>
-            <tr>
-                <td rowspan="2">
-                    {{item.Employee.Name.First}} {{item.Employee.Name.Last}}
-                </td>
-                <td>
-                    {{getKeys(item.Employee.Address)[0]}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{item.Employee.Address.HouseNo}}, {{item.Employee.Address.State}}, {{item.Employee.Address.Country}}
-                </td>
-            </tr>
-        </ng-container>
-
-    </table>
-</div>
-
-
-
 <table align="center" border="2">
     <thead>
-        <th>
+        <th rowspan="2">
             Name
         </th>
         <th>
             MoM SubHeading and points
         </th>
+        <th>
+            MoM Points
+        </th>
     </thead>
     <tbody>
         <tr *ngFor="let heading of meeting.headings">
             <td> {{heading.value}}</td>
-            <td>
+            <!-- <td>
                 <ul *ngFor="let subheading of heading.subHeadings">
                     <li>{{subheading.value}}</li>
                     <span>
@@ -51,7 +22,44 @@
                         </ul>
                     </span>
                 </ul>
-
+            </td> -->
+            <td rowspan="heading.subHeadings.length">
+                <table class="heading-table" border="1">
+                    <tbody>
+                        <tr *ngFor="let subheading of heading.subHeadings">
+                            <td>{{subheading.value}}</td>
+                            <td>
+                                <table class="heading-table" border="1">
+                                    <tbody>
+                                        <tr *ngFor="let point of subheading.points">
+                                            <td>{{point.info}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table class="heading-table" border="1">
+                    <tbody>
+                        <tr *ngFor="let subheading of heading.subHeadings">
+                            <!-- <td>{{subheading.value}}</td> -->
+                            <!-- <td>subheading</td> -->
+                            <td>
+                                <table class="heading-table" border="1">
+                                    <tbody>
+                                        <tr *ngFor="let point of subheading.points">
+                                            <td>{{point.info}}</td>
+                                            <!-- <td>subheading</td> -->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
             <!-- <td>
                 <ul *ngFor="let subheading of heading.subHeadings">

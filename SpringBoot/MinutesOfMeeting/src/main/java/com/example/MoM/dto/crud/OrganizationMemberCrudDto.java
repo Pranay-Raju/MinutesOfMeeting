@@ -1,6 +1,4 @@
-package com.example.MoM.dto;
-
-import javax.persistence.Column;
+package com.example.MoM.dto.crud;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class OrganizationMemberDto {
+public class OrganizationMemberCrudDto {
 
 	private int memberId;
 	private String name;
@@ -22,7 +20,6 @@ public class OrganizationMemberDto {
 	private String role;
 	private String address;
 	private String gender;
-	@Column(unique = true)
 	private String loginId;
 	private String password;
 

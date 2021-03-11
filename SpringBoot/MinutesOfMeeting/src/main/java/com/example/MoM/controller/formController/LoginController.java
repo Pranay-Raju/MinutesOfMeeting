@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.MoM.dto.OrganizationMemberDto;
+import com.example.MoM.dto.crud.OrganizationMemberCrudDto;
 import com.example.MoM.dto.formDto.LoginCredentials;
 import com.example.MoM.entity.OrganizationMemberEntity;
 import com.example.MoM.repositories.OrganizationMemberRepository;
@@ -21,14 +21,15 @@ public class LoginController {
 	ModelMapper mapper;
 
 	@PostMapping("/userWithCredentials")
-	public OrganizationMemberDto fetchUserWithCredentials(@RequestBody LoginCredentials credentials) {
+	public OrganizationMemberCrudDto fetchUserWithCredentials(@RequestBody LoginCredentials credentials) {
 		
-		OrganizationMemberEntity entity = memberRepository
+		OrganizationMemberEntity memberEntity = memberRepository
 				.findByLoginIdAndPassword(credentials.getLoginId(), credentials.getPassword())
 				.orElse(new OrganizationMemberEntity());
 		
-		OrganizationMemberDto dto = mapper.map(entity, OrganizationMemberDto.class);
-//		System.out.println(credentials);
+		System.out.println(memberEntity.getOrganizationEntity());
+		
+		OrganizationMemberCrudDto dto = mapper.map(memberEntity, OrganizationMemberCrudDto.class);
 		return dto;
 	}
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.MoM.dto.OrganizationMeetingDto;
+import com.example.MoM.dto.crud.OrganizationMeetingCrudDto;
 import com.example.MoM.entity.OrganizationMeetingEntity;
 import com.example.MoM.repositories.OrganizationMeetingRepository;
 
@@ -28,27 +28,27 @@ public class OrganizationMeetingController {
 	private ModelMapper mapper;
 
 	@GetMapping("/all")
-	public List<OrganizationMeetingDto> getAll() {
+	public List<OrganizationMeetingCrudDto> getAll() {
 		List<OrganizationMeetingEntity> list = organizationMeetingRepository.findAll();
-		List<OrganizationMeetingDto> dtos = new ArrayList<OrganizationMeetingDto>();
+		List<OrganizationMeetingCrudDto> dtos = new ArrayList<OrganizationMeetingCrudDto>();
 		for (OrganizationMeetingEntity entity : list) {
-			dtos.add(mapper.map(entity, OrganizationMeetingDto.class));
+			dtos.add(mapper.map(entity, OrganizationMeetingCrudDto.class));
 		}
 
 		return dtos;
 	}
 
 	@PostMapping("/save")
-	public OrganizationMeetingDto save(@RequestBody OrganizationMeetingEntity organizationMember) {
+	public OrganizationMeetingCrudDto save(@RequestBody OrganizationMeetingEntity organizationMember) {
 		OrganizationMeetingEntity entity = organizationMeetingRepository.save(organizationMember);
-		return mapper.map(entity, OrganizationMeetingDto.class);
+		return mapper.map(entity, OrganizationMeetingCrudDto.class);
 	}
 
 	@GetMapping("/byId/{id}")
-	public OrganizationMeetingDto save(@PathVariable("id") int id) {
+	public OrganizationMeetingCrudDto save(@PathVariable("id") int id) {
 		OrganizationMeetingEntity entity = organizationMeetingRepository.findById(id)
 				.orElse(new OrganizationMeetingEntity());
-		return mapper.map(entity, OrganizationMeetingDto.class);
+		return mapper.map(entity, OrganizationMeetingCrudDto.class);
 	}
 
 	@DeleteMapping("/")

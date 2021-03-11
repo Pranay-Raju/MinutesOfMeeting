@@ -31,9 +31,6 @@
             <li class="nav-item" *ngIf="(service.userRole === 'admin') || (service.userRole === 'facilitator') || (service.userRole === 'member')">
                 <a class="nav-link" routerLink="showHeadings">Show Headings</a>
             </li>
-            <li class="nav-item" *ngIf="service.userRole === 'admin'">
-                <a class="nav-link" routerLink="memberReg">Member Reg</a>
-            </li>
 
             <li class="nav-item">
                 <a class="nav-link">{{service.user.name}}</a>

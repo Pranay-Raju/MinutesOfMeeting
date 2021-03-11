@@ -8,16 +8,23 @@ import { Observable } from 'rxjs';
 export class LoginService {
 
   user: any;
+  userLoggedIn: boolean;
 
   constructor(public httpClient:HttpClient) { 
     this.user = {name: "XYZ"};
+    this.userLoggedIn=false;
   }
 
   public loginAsUser(userCred: any):Observable<any> {
     return this.httpClient.post("/userWithCredentials",userCred)
   }
 
-  public getUserLoggedIn(){
-    return true;
+  
+
+  getUserLoggedIn() {
+    return this.userLoggedIn;
+  }
+  setUserLoggedIn(value: boolean) {
+    this.userLoggedIn = value;
   }
 }

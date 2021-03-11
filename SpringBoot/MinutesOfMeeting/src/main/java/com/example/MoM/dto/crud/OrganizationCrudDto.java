@@ -1,4 +1,4 @@
-package com.example.MoM.dto;
+package com.example.MoM.dto.crud;
 
 import java.util.List;
 
@@ -13,14 +13,14 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class OrganizationDto {
+public class OrganizationCrudDto {
 
 	private int organizationId;
 	private String organizationName;
 	private String organizationDomain;
 	private String organizationMobileNo;
 	private String organizationAddress;
-	private List<OrganizationMemberDto> organizationMembers;
-	private List<OrganizationMeetingDto> organizationMeetings;
+	private List<OrganizationMemberCrudDto> organizationMembers;
+	private List<OrganizationMeetingCrudDto> organizationMeetings;
 
 }

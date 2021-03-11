@@ -36,10 +36,10 @@ export class ShowOrgMembersComponent implements OnInit {
   async ngOnInit() {
     this.organization = await this.organizationService.getOrganizationByName(this.userService.user.organizationName).toPromise();
     console.log("Organization Details are " + JSON.stringify(this.organization));
-    this.memberService.getOrgMembers(this.organization.id).subscribe((data: any) => { this.members = data });
+    this.memberService.getOrgMembers(this.organization.id).subscribe((data: any) => { console.log(data), this.members = data });
   }
 
-  
+
 
   showEditPop(member: any): void {
     this.editMember = member;
@@ -51,14 +51,24 @@ export class ShowOrgMembersComponent implements OnInit {
   deleteMember(member: any) {
 
   }
+  updateMembers() {
+
+    this.memberService.getOrgMembers(this.organization.id).subscribe((data: any) => { console.log(data), this.members = data });
+  }
 
   updateMember(member: any) {
-
+    console.log(member);
+    this.memberService.saveMember(member);
   }
 
   newMember() {
+    if (this.editFlag === true) {
+      this.editMember = {
+        name: '', organisation: '', mailId: '', mobileNo: '', role: '', address: '', gender: '', loginId: '', password: ''
+      };
+      this.editFlag = false;
+    }
     this.createFlag = true;
-    this.editFlag = false;
     jQuery('#empModel').modal('show');
 
   }

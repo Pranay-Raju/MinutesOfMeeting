@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.MoM.dto.OrganizationDto;
+import com.example.MoM.dto.crud.OrganizationCrudDto;
 import com.example.MoM.dto.orgAdmin.OrgDto;
 import com.example.MoM.entity.OrganizationEntity;
 import com.example.MoM.repositories.OrganizationRepository;
@@ -30,11 +30,11 @@ public class OrganizationController {
 	private ModelMapper mapper;
 
 	@GetMapping("/all")
-	public List<OrganizationDto> getAll() {
+	public List<OrganizationCrudDto> getAll() {
 		List<OrganizationEntity> list = organizationRepository.findAll();
-		List<OrganizationDto> dtos = new ArrayList<OrganizationDto>();
+		List<OrganizationCrudDto> dtos = new ArrayList<OrganizationCrudDto>();
 		for (OrganizationEntity entity : list) {
-			dtos.add(mapper.map(entity, OrganizationDto.class));
+			dtos.add(mapper.map(entity, OrganizationCrudDto.class));
 		}
 
 		return dtos;
@@ -52,15 +52,15 @@ public class OrganizationController {
 	}
 
 	@PostMapping("/save")
-	public OrganizationDto save(@RequestBody OrganizationEntity organization) {
+	public OrganizationCrudDto save(@RequestBody OrganizationEntity organization) {
 		OrganizationEntity entity = organizationRepository.save(organization);
-		return mapper.map(entity, OrganizationDto.class);
+		return mapper.map(entity, OrganizationCrudDto.class);
 	}
 
 	@GetMapping("/byId/{id}")
-	public OrganizationDto save(@PathVariable("id") int id) {
+	public OrganizationCrudDto save(@PathVariable("id") int id) {
 		OrganizationEntity entity = organizationRepository.findById(id).orElse(new OrganizationEntity());
-		OrganizationDto orgDto = mapper.map(entity, OrganizationDto.class);
+		OrganizationCrudDto orgDto = mapper.map(entity, OrganizationCrudDto.class);
 		return orgDto;
 	}
 

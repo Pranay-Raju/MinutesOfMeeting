@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class OrganizationService {
 
+  organizationDetails:any;
+
   constructor(public httpClient:HttpClient) { }
 
   public getAllOrganizations(){
@@ -16,7 +18,10 @@ export class OrganizationService {
     return this.httpClient.get('org/byName/' + name);
   }
 
-  // public getOrganizationByName(name:string){
-  //   return this.httpClient.get('orgByName/' + name);
-  // }
+  getOrganizationDetails() {
+    return this.organizationDetails;
+  }
+  setOrganizationDetails(value: any) {
+    this.organizationDetails = value;
+  }
 }

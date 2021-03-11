@@ -1,4 +1,4 @@
-package com.example.MoM.dto;
+package com.example.MoM.dto.crud;
 
 import java.util.List;
 
@@ -13,15 +13,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class MomHeadingDTO {
+public class MomHeadingCrudDTO {
 	
 	private int id;
 	
 	private String value;
 	private int parent_heading_id;
 	
-	private List<MomHeadingDTO> subHeadings;
+	private List<MomHeadingCrudDTO> subHeadings;
 	
-	private List<MomPointsDto> points;
+	private List<MomPointsCrudDto> points;
 
 }

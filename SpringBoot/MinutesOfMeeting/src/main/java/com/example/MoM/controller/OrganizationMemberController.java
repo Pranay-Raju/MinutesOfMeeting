@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.MoM.dto.OrganizationMemberDto;
+import com.example.MoM.dto.crud.OrganizationMemberCrudDto;
 import com.example.MoM.entity.OrganizationMemberEntity;
 import com.example.MoM.repositories.OrganizationMemberRepository;
 
@@ -28,11 +28,11 @@ public class OrganizationMemberController {
 	private ModelMapper mapper;
 
 	@GetMapping("/all")
-	public List<OrganizationMemberDto> getAll() {
+	public List<OrganizationMemberCrudDto> getAll() {
 		List<OrganizationMemberEntity> list = organizationMemberRepository.findAll();
-		List<OrganizationMemberDto> dtos = new ArrayList<OrganizationMemberDto>();
+		List<OrganizationMemberCrudDto> dtos = new ArrayList<OrganizationMemberCrudDto>();
 		for (OrganizationMemberEntity entity : list) {
-			dtos.add(mapper.map(entity, OrganizationMemberDto.class));
+			dtos.add(mapper.map(entity, OrganizationMemberCrudDto.class));
 		}
 
 		return dtos;
@@ -40,16 +40,16 @@ public class OrganizationMemberController {
 	}
 
 	@PostMapping("/save")
-	public OrganizationMemberDto save(@RequestBody OrganizationMemberEntity organizationMember) {
+	public OrganizationMemberCrudDto save(@RequestBody OrganizationMemberEntity organizationMember) {
 		OrganizationMemberEntity entity = organizationMemberRepository.save(organizationMember);
-		return mapper.map(entity, OrganizationMemberDto.class);
+		return mapper.map(entity, OrganizationMemberCrudDto.class);
 	}
 
 	@GetMapping("/byId/{id}")
-	public OrganizationMemberDto getById(@PathVariable("id") int id) {
+	public OrganizationMemberCrudDto getById(@PathVariable("id") int id) {
 		OrganizationMemberEntity entity = organizationMemberRepository.findById(id)
 				.orElse(new OrganizationMemberEntity());
-		return mapper.map(entity, OrganizationMemberDto.class);
+		return mapper.map(entity, OrganizationMemberCrudDto.class);
 	}
 
 	@DeleteMapping("/")
@@ -58,11 +58,11 @@ public class OrganizationMemberController {
 	}
 
 	@GetMapping("/byOrgId/{id}")
-	public List<OrganizationMemberDto> save2(@PathVariable("id") int id) {
+	public List<OrganizationMemberCrudDto> save2(@PathVariable("id") int id) {
 		List<OrganizationMemberEntity> memberEntities = organizationMemberRepository.findAllByOrganizationId(id);
-		List<OrganizationMemberDto> orgDtos = new ArrayList<OrganizationMemberDto>();
+		List<OrganizationMemberCrudDto> orgDtos = new ArrayList<OrganizationMemberCrudDto>();
 		for (OrganizationMemberEntity entity : memberEntities) {
-			orgDtos.add(mapper.map(entity, OrganizationMemberDto.class));
+			orgDtos.add(mapper.map(entity, OrganizationMemberCrudDto.class));
 		}
 		return orgDtos;
 	}

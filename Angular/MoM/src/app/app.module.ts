@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/basic/login/login.component';
 import { OrganizationComponent } from './components/admin/organization/organization.component';
-import { MemeberComponent } from './components/admin/memeber/memeber.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +25,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegisterComponent },
   { path: 'showMembers', canActivate: [AdminGuard], component: ShowOrgMembersComponent },
-  { path: 'memberReg', canActivate: [AdminGuard], component: MemeberComponent },
   { path: 'showMeetings', canActivate: [FacilitatorGuard], component: ShowOrgMeetingsComponent },
   { path: 'showHeadings', canActivate: [MemberGuard], component: ShowHeadingsComponent }
 
@@ -38,7 +36,6 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     OrganizationComponent,
-    MemeberComponent,
     RegisterComponent,
     NavbarComponent,
     ShowOrgMembersComponent,

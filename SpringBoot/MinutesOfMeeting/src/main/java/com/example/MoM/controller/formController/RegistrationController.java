@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.MoM.dto.OrganizationDto;
-import com.example.MoM.dto.OrganizationMemberDto;
+import com.example.MoM.dto.crud.OrganizationCrudDto;
+import com.example.MoM.dto.crud.OrganizationMemberCrudDto;
 import com.example.MoM.dto.formDto.RegisterFormDto;
 import com.example.MoM.entity.OrganizationEntity;
 import com.example.MoM.entity.OrganizationMemberEntity;
@@ -29,10 +29,10 @@ public class RegistrationController {
 	OrganizationMemberRepository organizationMemberRepository;
 
 	@PostMapping("/register")
-	public OrganizationDto regiser(@RequestBody RegisterFormDto registerForm) {
+	public OrganizationCrudDto regiser(@RequestBody RegisterFormDto registerForm) {
 		
-		OrganizationDto orgDto = mapper.map(registerForm, OrganizationDto.class);
-		OrganizationMemberDto memberDto = mapper.map(registerForm, OrganizationMemberDto.class);
+		OrganizationCrudDto orgDto = mapper.map(registerForm, OrganizationCrudDto.class);
+		OrganizationMemberCrudDto memberDto = mapper.map(registerForm, OrganizationMemberCrudDto.class);
 
 		OrganizationEntity orgEntity = mapper.map(registerForm, OrganizationEntity.class);
 		OrganizationMemberEntity memberEntity = mapper.map(registerForm, OrganizationMemberEntity.class);
@@ -54,7 +54,7 @@ public class RegistrationController {
 		orgEntity2 = organizationRepository.findById(orgEntity2.getOrganizationId()).orElse(orgEntity2);
 		
 		
-		OrganizationDto orgDto2 = mapper.map(orgEntity2, OrganizationDto.class);
+		OrganizationCrudDto orgDto2 = mapper.map(orgEntity2, OrganizationCrudDto.class);
 		return orgDto2;
 	}
 

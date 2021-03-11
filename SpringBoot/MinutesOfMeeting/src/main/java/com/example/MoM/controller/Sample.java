@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.MoM.dto.OrganizationMeetingDto;
-import com.example.MoM.dto.OrganizationMemberDto;
-import com.example.MoM.dto.MomHeadingDTO;
-import com.example.MoM.dto.OrganizationDto;
+import com.example.MoM.dto.crud.MomHeadingCrudDTO;
+import com.example.MoM.dto.crud.OrganizationCrudDto;
+import com.example.MoM.dto.crud.OrganizationMeetingCrudDto;
+import com.example.MoM.dto.crud.OrganizationMemberCrudDto;
 import com.example.MoM.entity.MomHeadingEntity;
 import com.example.MoM.entity.MomPointEntity;
 import com.example.MoM.entity.OrganizationEntity;
@@ -45,7 +45,7 @@ public class Sample {
 	private ModelMapper mapper;
 
 	@GetMapping("/hello")
-	public /*OrganizationEntity*/ OrganizationDto  hello() {
+	public /*OrganizationEntity*/ OrganizationCrudDto  hello() {
 
 		// creating an Organization
 		OrganizationEntity organization = new OrganizationEntity();
@@ -210,22 +210,22 @@ public class Sample {
 		momPointRepository.save(point8);
 
 		// mapping to respective Dtos to transfer to front end
-		OrganizationDto organizationDto = mapper.map(organization, OrganizationDto.class);
+		OrganizationCrudDto organizationDto = mapper.map(organization, OrganizationCrudDto.class);
 
-		OrganizationMemberDto memberDto1 = mapper.map(memberEntity1, OrganizationMemberDto.class);
-		OrganizationMemberDto memberDto2 = mapper.map(memberEntity2, OrganizationMemberDto.class);
+		OrganizationMemberCrudDto memberDto1 = mapper.map(memberEntity1, OrganizationMemberCrudDto.class);
+		OrganizationMemberCrudDto memberDto2 = mapper.map(memberEntity2, OrganizationMemberCrudDto.class);
 
-		OrganizationMeetingDto meetingDto = mapper.map(meeting, OrganizationMeetingDto.class);
+		OrganizationMeetingCrudDto meetingDto = mapper.map(meeting, OrganizationMeetingCrudDto.class);
 
 		organizationDto.getOrganizationMembers().add(memberDto1);
 		organizationDto.getOrganizationMembers().add(memberDto2);
 
-		organizationDto.setOrganizationMeetings(new ArrayList<OrganizationMeetingDto>());
+		organizationDto.setOrganizationMeetings(new ArrayList<OrganizationMeetingCrudDto>());
 		organizationDto.getOrganizationMeetings().add(meetingDto);
 
-		MomHeadingDTO headingdto = mapper.map(heading1, MomHeadingDTO.class);
+		MomHeadingCrudDTO headingdto = mapper.map(heading1, MomHeadingCrudDTO.class);
 
-		meetingDto.setHeadings(new ArrayList<MomHeadingDTO>());
+		meetingDto.setHeadings(new ArrayList<MomHeadingCrudDTO>());
 		meetingDto.getHeadings().add(headingdto);
 
 		return organizationDto;

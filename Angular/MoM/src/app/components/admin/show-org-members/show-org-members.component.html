@@ -15,8 +15,8 @@
                 <div class="modal-body">
                     <form #regForm="ngForm">
                         <!-- <input type="number" placeholder="empId" name="empId" [(ngModel)]="editMember.empId" /> <br /> -->
-                        <input type="text" placeholder="empName" name="name" [(ngModel)]="editMember.name" /> <br />
-                        <input type="text" placeholder="organisation" name="organisation" [(ngModel)]="editMember.organisation" /> <br />
+                        <input type="text" placeholder="name" name="name" [(ngModel)]="editMember.name" /> <br />
+                        <input type="text" placeholder="organizationName" name="organizationName" [(ngModel)]="editMember.organizationName" /> <br />
                         <input type="text" placeholder="mailId" name="mailId" [(ngModel)]="editMember.mailId" /> <br />
                         <input type="text" placeholder="mobileNo" name="mobileNo" [(ngModel)]="editMember.mobileNo" /> <br />
                         <input type="text" placeholder="role" name="role" [(ngModel)]="editMember.role" /> <br />
@@ -41,7 +41,7 @@
     </div>
 
     <div class="container">
-        <table class="table table-bordered table-striped table-hover table-sm">
+        <table class="table table-bordered table-striped table-hover table-sm table-primary">
             <thead>
                 <tr class="bg-info text-white" align="center">
                     <th>MemberId</th>
@@ -62,7 +62,7 @@
                 <tr *ngFor='let member of members' align='center'>
                     <td>{{member.memberId}}</td>
                     <td>{{member.name | uppercase}}</td>
-                    <td>{{member.organisation}}</td>
+                    <td>{{member.organizationName}}</td>
                     <td>{{member.mailId |lowercase}}</td>
                     <td>{{member.mobileNo}}</td>
                     <td>{{member.role}}</td>

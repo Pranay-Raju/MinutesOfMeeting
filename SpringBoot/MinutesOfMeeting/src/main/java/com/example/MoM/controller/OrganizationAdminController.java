@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.MoM.dto.OrganizationMemberDto;
+import com.example.MoM.dto.crud.OrganizationMemberCrudDto;
 import com.example.MoM.dto.orgAdmin.OrgDto;
 import com.example.MoM.entity.OrganizationEntity;
 import com.example.MoM.entity.OrganizationMemberEntity;
@@ -39,11 +39,11 @@ public class OrganizationAdminController {
 	}
 	
 	@GetMapping("/getByOrg/{orgId}")
-	public List<OrganizationMemberDto> getAll(@PathVariable("orgId")int id) {
+	public List<OrganizationMemberCrudDto> getAll(@PathVariable("orgId")int id) {
 		List<OrganizationMemberEntity> orgMemberList = organizationMemberRepository.findAllByOrganizationId(id);
-		List<OrganizationMemberDto> orgDtos = new ArrayList<OrganizationMemberDto>();
+		List<OrganizationMemberCrudDto> orgDtos = new ArrayList<OrganizationMemberCrudDto>();
 		for(OrganizationMemberEntity entity:orgMemberList) {
-			orgDtos.add(mapper.map(entity, OrganizationMemberDto.class));
+			orgDtos.add(mapper.map(entity, OrganizationMemberCrudDto.class));
 		}
 		
 		return orgDtos;
