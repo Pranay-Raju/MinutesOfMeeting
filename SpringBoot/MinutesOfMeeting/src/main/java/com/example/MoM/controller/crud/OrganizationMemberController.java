@@ -1,4 +1,4 @@
-package com.example.MoM.controller;
+package com.example.MoM.controller.crud;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -16,7 +16,7 @@ import lombok.ToString;
 public class MemberFormDto {
 	
 	private String name;
-	private OrganizationCrudDto organizationDetails;
+	private OrganizationCrudDto organization;
 	private String mailId;
 	private String mobileNo;
 	private String role;

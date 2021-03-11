@@ -9,14 +9,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3> Edit Employee </h3>
+                    <h3 *ngIf=createFlag> Add a Member </h3>
+                    <h3 *ngIf=editFlag> Edit Member details </h3>
                     <span class="close" data-dismiss="modal">&times;</span>
                 </div>
                 <div class="modal-body">
                     <form #regForm="ngForm">
-                        <!-- <input type="number" placeholder="empId" name="empId" [(ngModel)]="editMember.empId" /> <br /> -->
                         <input type="text" placeholder="name" name="name" [(ngModel)]="editMember.name" /> <br />
-                        <input type="text" placeholder="organizationName" name="organizationName" [(ngModel)]="editMember.organizationName" /> <br />
+                        <input type="text" placeholder="organizationName" name="organizationName" [(ngModel)]="organizationService.organizationDetails.organizationName" readonly/> <br />
                         <input type="text" placeholder="mailId" name="mailId" [(ngModel)]="editMember.mailId" /> <br />
                         <input type="text" placeholder="mobileNo" name="mobileNo" [(ngModel)]="editMember.mobileNo" /> <br />
                         <input type="text" placeholder="role" name="role" [(ngModel)]="editMember.role" /> <br />
@@ -44,7 +44,7 @@
         <table class="table table-bordered table-striped table-hover table-sm table-primary">
             <thead>
                 <tr class="bg-info text-white" align="center">
-                    <th>MemberId</th>
+                    <!-- <th>MemberId</th> -->
                     <th> MemberName</th>
                     <th> organisation</th>
                     <th> mailId</th>
@@ -60,7 +60,7 @@
             </thead>
             <tbody>
                 <tr *ngFor='let member of members' align='center'>
-                    <td>{{member.memberId}}</td>
+                    <!-- <td>{{member.memberId}}</td> -->
                     <td>{{member.name | uppercase}}</td>
                     <td>{{member.organizationName}}</td>
                     <td>{{member.mailId |lowercase}}</td>

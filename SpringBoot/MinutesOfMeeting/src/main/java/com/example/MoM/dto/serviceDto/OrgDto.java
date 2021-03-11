@@ -1,4 +1,4 @@
-package com.example.MoM.dto.orgAdmin;
+package com.example.MoM.dto.serviceDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,5 +15,8 @@ public class OrgDto {
 	
 	private int organizationId;
 	private String organizationName;
+	private String organizationDomain;
+	private String organizationMobileNo;
+	private String organizationAddress;
 
 }

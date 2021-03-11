@@ -10,13 +10,7 @@ export class OrganizationService {
 
   constructor(public httpClient:HttpClient) { }
 
-  public getAllOrganizations(){
-    return this.httpClient.get('allOrganizations');
-  }
 
-  public getOrganizationByName(name:string){
-    return this.httpClient.get('org/byName/' + name);
-  }
 
   getOrganizationDetails() {
     return this.organizationDetails;

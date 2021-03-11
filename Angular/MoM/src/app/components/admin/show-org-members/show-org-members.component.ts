@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { delay } from 'rxjs/operators';
 import { MemberService } from 'src/app/services/member.service';
 import { UserService } from 'src/app/services/user.service';
 import { OrganizationService } from '../../../services/organization.service';
@@ -18,8 +19,6 @@ export class ShowOrgMembersComponent implements OnInit {
   editFlag: boolean;
   createFlag: boolean;
 
-  organization: any;
-
   constructor(public organizationService: OrganizationService, public userService: UserService, public memberService: MemberService) {
     this.editFlag = false;
     this.createFlag = false;
@@ -34,9 +33,8 @@ export class ShowOrgMembersComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.organization = await this.organizationService.getOrganizationByName(this.userService.user.organizationName).toPromise();
-    console.log("Organization Details are " + JSON.stringify(this.organization));
-    this.memberService.getOrgMembers(this.organization.id).subscribe((data: any) => { console.log(data), this.members = data });
+    console.log("Organization Details are " + JSON.stringify(this.organizationService.organizationDetails));
+    this.memberService.getOrgMembers(this.organizationService.organizationDetails.organizationId).subscribe((data: any) => { console.log(data), this.members = data });
   }
 
 
@@ -49,28 +47,31 @@ export class ShowOrgMembersComponent implements OnInit {
   }
 
   deleteMember(member: any) {
+    this.memberService.getOrgMembers(this.organizationService.organizationDetails.organizationId).subscribe((data: any) => { console.log(data), this.members = data });
+    this.memberService.deleteMember(member);
 
   }
   updateMembers() {
-
-    this.memberService.getOrgMembers(this.organization.id).subscribe((data: any) => { console.log(data), this.members = data });
+    this.memberService.getOrgMembers(this.organizationService.organizationDetails.organizationId).subscribe((data: any) => { console.log(data), this.members = data });
   }
 
-  updateMember(member: any) {
+  async updateMember(member: any) {
+    
+    member.organization = this.organizationService.organizationDetails;
     console.log(member);
-    this.memberService.saveMember(member);
+    const a =await this.memberService.saveMember(member).pipe(delay(1000)).toPromise();
+    console.log("Response is " +a);
   }
 
   newMember() {
     if (this.editFlag === true) {
       this.editMember = {
-        name: '', organisation: '', mailId: '', mobileNo: '', role: '', address: '', gender: '', loginId: '', password: ''
+        name: '', organisation: this.organizationService.organizationDetails.organizationName, mailId: '', mobileNo: '', role: '', address: '', gender: '', loginId: '', password: ''
       };
       this.editFlag = false;
     }
     this.createFlag = true;
     jQuery('#empModel').modal('show');
-
   }
 
 }
