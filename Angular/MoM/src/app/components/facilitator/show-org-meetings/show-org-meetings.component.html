@@ -17,7 +17,11 @@
                 <div class="modal-body">
                     <form #regForm="ngForm">
                         <!-- <input type="number" placeholder="empId" name="empId" [(ngModel)]="editMember.empId" /> <br /> -->
-                        <input type="text" placeholder="Meeting Name" name="name" [(ngModel)]="editMeeting.name" /> <br />
+                        <input type="text" placeholder="Meeting Name" name="name" [(ngModel)]="editMeeting.name" />
+                        <br />
+                        <input type="text" placeholder="Meeting facilitator" name="facilitator" [(ngModel)]="editMeeting.facilitator" />
+                        <br />
+
                         <!-- <input type="text" placeholder="organisation" name="organizationName" [(ngModel)]="editMember.organizationName" /> <br />
                         <input type="text" placeholder="mailId" name="mailId" [(ngModel)]="editMember.mailId" /> <br />
                         <input type="text" placeholder="mobileNo" name="mobileNo" [(ngModel)]="editMember.mobileNo" /> <br />
@@ -46,8 +50,11 @@
     <table class="table table-bordered table-striped table-hover table-sm">
         <thead>
             <tr class="bg-info text-white" align="center">
-                <th>MeetingId</th>
+                <!-- <th>MeetingId</th> -->
                 <th> MeetingName</th>
+                <th>facilitator</th>
+                <!-- <th>startDateAndTime</th>
+                <th>endDateAndTime</th> -->
 
 
                 <th> Edit</th>
@@ -56,13 +63,20 @@
         </thead>
         <tbody>
             <tr *ngFor='let meeting of meetings' align='center'>
-                <td>{{meeting.meetingId}}</td>
+                <!-- <td>{{meeting.meetingId}}</td> -->
                 <td>{{meeting.name | uppercase}}</td>
+                <td>{{meeting.facilitator | uppercase}}</td>
+                <!-- <td>{{meeting.startDateAndTime }}</td>
+                <td>{{meeting.endDateAndTime | uppercase}}</td> -->
 
 
 
-                <td><button (click)="ShowEditPopup(meeting)"><div class="glyphicon glyphicon-pencil"></div></button></td>
-                <td><button (click)="deleteMeeting(meeting)"><div class="glyphicon glyphicon-trash"></div></button></td>
+                <td><button (click)="ShowEditPopup(meeting)">
+                        <div class="glyphicon glyphicon-pencil"></div>
+                    </button></td>
+                <td><button (click)="deleteMeeting(meeting)">
+                        <div class="glyphicon glyphicon-trash"></div>
+                    </button></td>
 
 
             </tr>

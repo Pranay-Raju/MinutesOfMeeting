@@ -15,7 +15,8 @@ export class MemberService {
   }
 
   deleteMember(member: any) {
-    return this.httpClient.get("deleteMember/" + member.memberId).pipe(delay(1000)).toPromise();
+    // return this.httpClient.delete("member/",member);
+    return this.httpClient.get("deleteMember/" + member.memberId);
 
   }
 

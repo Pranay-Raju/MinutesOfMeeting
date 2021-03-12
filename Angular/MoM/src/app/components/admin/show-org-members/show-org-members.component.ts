@@ -48,7 +48,10 @@ export class ShowOrgMembersComponent implements OnInit {
 
   deleteMember(member: any) {
     this.memberService.getOrgMembers(this.organizationService.organizationDetails.organizationId).subscribe((data: any) => { console.log(data), this.members = data });
-    this.memberService.deleteMember(member);
+    this.memberService.deleteMember(member).subscribe((data: any) => {
+      const i = this.members.findIndex((record: any) => { return record.memberId === member.memberId; })
+      this.members.splice(i, 1);
+    });
 
   }
   updateMembers() {
@@ -56,11 +59,11 @@ export class ShowOrgMembersComponent implements OnInit {
   }
 
   async updateMember(member: any) {
-    
+
     member.organization = this.organizationService.organizationDetails;
     console.log(member);
-    const a =await this.memberService.saveMember(member).pipe(delay(1000)).toPromise();
-    console.log("Response is " +a);
+    const a = await this.memberService.saveMember(member).pipe(delay(1000)).toPromise();
+    console.log("Response is " + a);
   }
 
   newMember() {

@@ -42,6 +42,23 @@ public class MemberFormController {
 		return memberCrudDto;
 
 	}
+	
+	@PostMapping("memberForm/update")
+	public OrganizationMemberCrudDto update(@RequestBody MemberFormDto memberFormDto) {
+
+		OrganizationMemberEntity memberEntity = mapper.map(memberFormDto, OrganizationMemberEntity.class);
+		OrganizationEntity organizationEntity = mapper.map(memberFormDto.getOrganization(), OrganizationEntity.class);
+
+		memberEntity.setOrganizationMemberId(memberFormDto.getMemberId());
+
+		organizationEntity = organizationRepository.getOne(organizationEntity.getOrganizationId());
+		memberEntity.setOrganizationEntity(organizationEntity);
+		OrganizationMemberEntity memberEntity2 = repository.save(memberEntity);
+
+		OrganizationMemberCrudDto memberCrudDto = mapper.map(memberEntity2, OrganizationMemberCrudDto.class);
+		return memberCrudDto;
+
+	}
 
 	@GetMapping("deleteMember/{id}")
 	public String delete(@PathVariable("id") int id) {

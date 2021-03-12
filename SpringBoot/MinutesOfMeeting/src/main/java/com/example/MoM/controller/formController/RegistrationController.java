@@ -31,7 +31,6 @@ public class RegistrationController {
 	@PostMapping("/register")
 	public OrganizationCrudDto regiser(@RequestBody RegisterFormDto registerForm) {
 		
-		OrganizationCrudDto orgDto = mapper.map(registerForm, OrganizationCrudDto.class);
 		OrganizationMemberCrudDto memberDto = mapper.map(registerForm, OrganizationMemberCrudDto.class);
 
 		OrganizationEntity orgEntity = mapper.map(registerForm, OrganizationEntity.class);
@@ -49,7 +48,6 @@ public class RegistrationController {
 		orgEntity.getOrganizationMembers().add(memberEntity);
 		
 		OrganizationEntity orgEntity2 = organizationRepository.save(orgEntity);
-		OrganizationMemberEntity memberEntity2 = organizationMemberRepository.save(memberEntity);
 		
 		orgEntity2 = organizationRepository.findById(orgEntity2.getOrganizationId()).orElse(orgEntity2);
 		
