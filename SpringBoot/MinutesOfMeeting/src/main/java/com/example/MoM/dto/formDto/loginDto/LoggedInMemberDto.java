@@ -1,6 +1,4 @@
-package com.example.MoM.dto.formDto;
-
-import com.example.MoM.dto.orgAdmin.OrgDto;
+package com.example.MoM.dto.formDto.loginDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

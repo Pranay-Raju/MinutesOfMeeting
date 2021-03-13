@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MoM.dto.crud.OrganizationCrudDto;
-import com.example.MoM.dto.orgAdmin.OrgDto;
+import com.example.MoM.dto.formDto.loginDto.OrgDto;
 import com.example.MoM.entity.OrganizationEntity;
 import com.example.MoM.repositories.OrganizationRepository;
 
