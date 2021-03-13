@@ -3,12 +3,15 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Service to manage the user who logged in, and make essential changes to UI 
+ */
 export class UserService {
 
   userLoggedIn: boolean;
 
   userRole: string;
-  
+
   /*"admin" - >manage Members
     "facilitator" -> manage meetinggs and attendees
     "member" -> view Mom

@@ -4,11 +4,14 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Service to manage organization details based on the logedIn user
+ */
 export class OrganizationService {
 
-  organizationDetails:any;
+  organizationDetails: any;
 
-  constructor(public httpClient:HttpClient) { }
+  constructor(public httpClient: HttpClient) { }
 
 
 
@@ -17,5 +20,9 @@ export class OrganizationService {
   }
   setOrganizationDetails(value: any) {
     this.organizationDetails = value;
+  }
+
+  getFacilitators(){
+    return this.httpClient.get("allFacilitators/" + this.organizationDetails.organizationId).toPromise();
   }
 }

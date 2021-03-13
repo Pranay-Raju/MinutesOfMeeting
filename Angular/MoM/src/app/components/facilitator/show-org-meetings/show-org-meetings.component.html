@@ -16,20 +16,14 @@
                 </div>
                 <div class="modal-body">
                     <form #regForm="ngForm">
-                        <!-- <input type="number" placeholder="empId" name="empId" [(ngModel)]="editMember.empId" /> <br /> -->
-                        <input type="text" placeholder="Meeting Name" name="name" [(ngModel)]="editMeeting.name" />
+                        <input type="text" placeholder="Meeting Name" name="meetingName" [(ngModel)]="editMeeting.meetingName" />
                         <br />
-                        <input type="text" placeholder="Meeting facilitator" name="facilitator" [(ngModel)]="editMeeting.facilitator" />
-                        <br />
+                        <select name="facilitator" class="form-group" ngModel>
+                            <option value="" selected>Select A Facilitator</option>
+                            <option value= {{fac.name}} *ngFor="let fac of meetingService.facilitators"> {{fac.name}}
+                            </option>
+                        </select><br/>
 
-                        <!-- <input type="text" placeholder="organisation" name="organizationName" [(ngModel)]="editMember.organizationName" /> <br />
-                        <input type="text" placeholder="mailId" name="mailId" [(ngModel)]="editMember.mailId" /> <br />
-                        <input type="text" placeholder="mobileNo" name="mobileNo" [(ngModel)]="editMember.mobileNo" /> <br />
-                        <input type="text" placeholder="role" name="role" [(ngModel)]="editMember.role" /> <br />
-                        <input type="text" placeholder="address" name="address" [(ngModel)]="editMember.address" /> <br />
-                        <input type="text" placeholder="gender" name="gender" [(ngModel)]="editMember.gender" /> <br />
-                        <input type="text" placeholder="loginId" name="loginId" [(ngModel)]="editMember.loginId" /> <br />
-                        <input type="password" placeholder="password" name="password" [(ngModel)]="editMember.password" /> <br /> -->
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -64,8 +58,8 @@
         <tbody>
             <tr *ngFor='let meeting of meetings' align='center'>
                 <!-- <td>{{meeting.meetingId}}</td> -->
-                <td>{{meeting.name | uppercase}}</td>
-                <td>{{meeting.facilitator | uppercase}}</td>
+                <td>{{meeting.meetingName | uppercase}}</td>
+                <td>{{meeting.facilitator.name | uppercase}}</td>
                 <!-- <td>{{meeting.startDateAndTime }}</td>
                 <td>{{meeting.endDateAndTime | uppercase}}</td> -->
 

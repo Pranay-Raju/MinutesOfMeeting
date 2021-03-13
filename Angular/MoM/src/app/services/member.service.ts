@@ -5,6 +5,9 @@ import { delay } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Service to call member management calls
+ */
 export class MemberService {
 
   constructor(public httpClient: HttpClient) { }

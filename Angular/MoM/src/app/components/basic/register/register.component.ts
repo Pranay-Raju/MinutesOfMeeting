@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterService } from '../../../services/register.service';
 import { UserService } from '../../../services/user.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -20,8 +22,9 @@ export class RegisterComponent implements OnInit {
   registerForm(regForm: any) {
     console.log("Registration Form Details:");
     console.log(regForm);
-    this.regiserService.registerOrg(regForm);
+    const t = this.regiserService.registerOrg(regForm);
     this.registerSuccessMsg = "Registration Successful";
-
+    // this.router.navigate()
+    console.log(t);
   }
 }

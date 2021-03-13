@@ -44,7 +44,6 @@
         <table class="table table-bordered table-striped table-hover table-sm table-primary">
             <thead>
                 <tr class="bg-info text-white" align="center">
-                    <!-- <th>MemberId</th> -->
                     <th> MemberName</th>
                     <th> organisation</th>
                     <th> mailId</th>
@@ -52,15 +51,12 @@
                     <th> role</th>
                     <th> address</th>
                     <th> gender</th>
-                    <!-- <th> LoginId</th>
-                <th> Password</th> -->
                     <th> Edit</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor='let member of members' align='center'>
-                    <!-- <td>{{member.memberId}}</td> -->
                     <td>{{member.name | uppercase}}</td>
                     <td>{{member.organizationName}}</td>
                     <td>{{member.mailId |lowercase}}</td>
@@ -68,8 +64,6 @@
                     <td>{{member.role}}</td>
                     <td>{{member.address |uppercase}}</td>
                     <td>{{member.gender |uppercase }}</td>
-                    <!-- <td>{{member.loginId }}</td>
-                <td>{{member.password}}</td> -->
 
 
                     <td>

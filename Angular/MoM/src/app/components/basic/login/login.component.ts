@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
     console.log("LoginForm Object Data : ");
     console.log(loginForm);
 
-    const t = await this.loginService.loginAsUser(loginForm).pipe(delay(1000)).toPromise();
+    const t = await this.loginService.loginAsUser(loginForm).toPromise();
 
     console.log('the user is ' + JSON.stringify(t));
 
-    if (t === null || typeof t === undefined || t.memberId === 0) {
+    if (t === null || typeof t === undefined || t.memberId === 0 || t.name === null) {
       this.loginService.user = { name: "XYZ" };
       this.invalidMessage = "InvalidCredentials";
     }
@@ -53,6 +53,19 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['showHeadings'])
       }
 
+    }
+  }
+
+  loginRedirect(){
+    var t = this.userService.getUser();
+    if (t.role === "admin") {
+      this.router.navigate(['showMembers']);
+    }
+    else if (t.role === "facilitator") {
+      this.router.navigate(['showMeetings']);
+    }
+    else if (t.role === "member") {
+      this.router.navigate(['showHeadings'])
     }
   }
 
