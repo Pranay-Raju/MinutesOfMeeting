@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MoM.dto.crud.OrganizationMeetingCrudDto;
+import com.example.MoM.dto.crud.OrganizationMemberCrudDto;
 import com.example.MoM.entity.OrganizationMeetingEntity;
+import com.example.MoM.entity.OrganizationMemberEntity;
 import com.example.MoM.repositories.OrganizationMeetingRepository;
 
 @RestController
@@ -55,5 +57,7 @@ public class OrganizationMeetingController {
 	public void delete(@RequestBody OrganizationMeetingEntity organizationMember) {
 		organizationMeetingRepository.delete(organizationMember);
 	}
+	
+	
 
 }
