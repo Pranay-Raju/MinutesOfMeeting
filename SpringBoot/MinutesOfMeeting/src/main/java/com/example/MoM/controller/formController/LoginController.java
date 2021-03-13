@@ -38,8 +38,8 @@ public class LoginController {
 		System.out.println("Logged In Member is " + loggedInMemberDto);
 		
 //		OrganizationMemberCrudDto dto = mapper.map(memberEntity, OrganizationMemberCrudDto.class);
-//		return loggedInMemberDto;
-		return null;
+		return loggedInMemberDto;
+//		return null;
 	}
 
 }
