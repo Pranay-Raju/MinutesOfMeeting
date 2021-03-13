@@ -19,7 +19,7 @@ import { MemberGuard } from './guards/member.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { FacilitatorGuard } from './guards/facilitator.guard';
 import { MemberByIdComponent } from './components/admin/member-by-id/member-by-id.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/basic/footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },

@@ -27,5 +27,9 @@ export class MemberService {
     return this.httpClient.post("memberForm/save", member);
   }
 
+  updateMember(member: any) {
+    return this.httpClient.post("memberForm/update", member);
+  }
+
 
 }

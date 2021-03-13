@@ -62,6 +62,15 @@ export class ShowOrgMembersComponent implements OnInit {
 
     member.organization = this.organizationService.organizationDetails;
     console.log(member);
+    const a = await this.memberService.updateMember(member).pipe(delay(1000)).toPromise();
+    console.log("Response is " + a);
+    this.updateMembers();
+  }
+
+  async saveMember(member: any) {
+
+    member.organization = this.organizationService.organizationDetails;
+    console.log(member);
     const a = await this.memberService.saveMember(member).pipe(delay(1000)).toPromise();
     console.log("Response is " + a);
     this.updateMembers();
