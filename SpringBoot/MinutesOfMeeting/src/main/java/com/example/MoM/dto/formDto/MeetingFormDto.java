@@ -14,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class MeetingDto {
+public class MeetingFormDto {
 	
 	private int meetingId;
 	private String name;

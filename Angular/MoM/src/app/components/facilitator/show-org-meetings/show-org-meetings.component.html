@@ -16,18 +16,18 @@
                 </div>
                 <div class="modal-body">
                     <form #regForm="ngForm">
-                        <input type="text" placeholder="Meeting Name" name="meetingName" [(ngModel)]="editMeeting.meetingName" />
+                        <input type="text" placeholder="Meeting Name" name="meetingName" [(ngModel)]="editMeeting.name" />
                         <br />
-                        <select name="facilitator" class="form-group" ngModel>
+                        <select name="facilitator" class="form-group" [(ngModel)]="editMeeting.facilitatorName">
                             <option value="" selected>Select A Facilitator</option>
-                            <option value= {{fac.name}} *ngFor="let fac of meetingService.facilitators"> {{fac.name}}
+                            <option value={{fac.name}} *ngFor="let fac of meetingService.facilitators"> {{fac.name}}
                             </option>
                         </select><br/>
 
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button *ngIf=createFlag (click)="updateMeeting(editMeeting)" class="btn btn-primary btn-sm" data-dismiss="modal">Create
+                    <button *ngIf=createFlag (click)="createMeeting(editMeeting)" class="btn btn-primary btn-sm" data-dismiss="modal">Create
                         Meeting</button>
                     <button *ngIf=editFlag (click)="updateMeeting(editMeeting)" class="btn btn-primary btn-sm" data-dismiss="modal">Update
                         Meeting</button>
@@ -47,6 +47,8 @@
                 <!-- <th>MeetingId</th> -->
                 <th> MeetingName</th>
                 <th>facilitator</th>
+                <th>Edit Minutes</th>
+                <th>View Minutes</th>
                 <!-- <th>startDateAndTime</th>
                 <th>endDateAndTime</th> -->
 
@@ -63,7 +65,13 @@
                 <!-- <td>{{meeting.startDateAndTime }}</td>
                 <td>{{meeting.endDateAndTime | uppercase}}</td> -->
 
+                <td><button (click)="editMinutes(meeting)" class=" btn btn-info btn-lg">
+                    <div class="glyphicon glyphicon-th-list"></div>
+                </button></td>
 
+                <td><button (click)="viewMinutes(meeting)" class=" btn btn-info btn-lg">
+                    <div class="glyphicon glyphicon-th-list"></div>
+                </button></td>
 
                 <td><button (click)="ShowEditPopup(meeting)">
                         <div class="glyphicon glyphicon-pencil"></div>

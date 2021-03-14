@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../../services/login.service';
+import { LoginService } from '../../../services/org&users/login.service';
 import { delay } from 'rxjs/operators';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../services/org&users/user.service';
 import { Router } from '@angular/router';
-import { OrganizationService } from 'src/app/services/organization.service';
+import { OrganizationService } from 'src/app/services/org&users/organization.service';
 
 @Component({
   selector: 'app-login',
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['showMeetings']);
     }
     else if (t.role === "member") {
-      this.router.navigate(['showHeadings'])
+      this.router.navigate(['mom'])
     }
   }
 

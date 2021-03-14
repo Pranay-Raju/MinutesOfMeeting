@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MoM.dto.crud.OrganizationMeetingCrudDto;
 import com.example.MoM.dto.crud.OrganizationMemberCrudDto;
-import com.example.MoM.dto.formDto.MeetingDto;
+import com.example.MoM.dto.formDto.MeetingFormDto;
+import com.example.MoM.dto.formDto.MeetingFormResponseDto;
 import com.example.MoM.entity.OrganizationEntity;
 import com.example.MoM.entity.OrganizationMeetingEntity;
 import com.example.MoM.entity.OrganizationMemberEntity;
@@ -33,7 +34,8 @@ public class MeetingFormController {
 	ModelMapper mapper;
 	
 	@PostMapping("/meetingForm/save")
-	public OrganizationMeetingEntity save(@RequestBody MeetingDto meetingDto ) {
+	public MeetingFormResponseDto save(@RequestBody MeetingFormDto meetingDto ) {
+		System.out.println(meetingDto);
 		
 		OrganizationMeetingEntity meetingEntity = mapper.map(meetingDto, OrganizationMeetingEntity.class);
 		meetingEntity.setId(0);
@@ -51,12 +53,20 @@ public class MeetingFormController {
 		
 		System.out.println(meetingEntity);
 		
-		return meetingRepository.save(meetingEntity);
+//		if()
+		meetingEntity.setMeetingName(meetingDto.getName());
+		
+		OrganizationMeetingEntity meetingEntity2 = meetingRepository.save(meetingEntity);
+		
+		MeetingFormResponseDto responseDto =  mapper.map(meetingEntity2, MeetingFormResponseDto.class);
+		
+		return responseDto;
 		
 	}
 	
 	@PostMapping("/meetingForm/update")
-	public OrganizationMeetingCrudDto update(@RequestBody MeetingDto meetingDto ) {
+	public MeetingFormResponseDto update(@RequestBody MeetingFormDto meetingDto ) {
+		System.out.println(meetingDto);
 		
 		OrganizationMeetingEntity meetingEntity = mapper.map(meetingDto, OrganizationMeetingEntity.class);
 //		meetingEntity.setId(0);
@@ -68,17 +78,21 @@ public class MeetingFormController {
 		System.out.println(memberEntity);
 		
 		OrganizationEntity organizationEntity = mapper.map(meetingDto.getOrganization(), OrganizationEntity.class);
-//		meetingEntity.setOrganizationEntity(organizationEntity);
-//		
-//		
-		System.out.println(organizationEntity);
-//		
-		System.out.println(meetingEntity);
-		OrganizationMeetingCrudDto meetingCrudDto = mapper.map(meetingRepository.save(meetingEntity),OrganizationMeetingCrudDto.class);
+		meetingEntity.setOrganizationEntity(organizationEntity);
 		
-//		
-//		return meetingRepository.save(meetingEntity);
-		return meetingCrudDto;
+		
+		System.out.println(organizationEntity);
+		
+		System.out.println(meetingEntity);
+		
+//		if()
+		meetingEntity.setMeetingName(meetingDto.getName());
+		
+		OrganizationMeetingEntity meetingEntity2 = meetingRepository.save(meetingEntity);
+		
+		MeetingFormResponseDto responseDto =  mapper.map(meetingEntity2, MeetingFormResponseDto.class);
+		
+		return responseDto;
 		
 	}
 	
@@ -101,6 +115,13 @@ public class MeetingFormController {
 			dtos.add(mapper.map(entity, OrganizationMemberCrudDto.class));
 		}
 		return dtos;
+	}
+	
+	@GetMapping("/deleteMeeting/{id}")
+	public String deleteMeeting(@PathVariable("id") int id) {
+		System.out.println("REcieved the id  = " + id);
+		meetingRepository.deleteById(id);
+		return "success";
 	}
 	
 

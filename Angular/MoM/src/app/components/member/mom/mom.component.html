@@ -1,0 +1,11 @@
+<h1 align="center">{{meetService.meeting.meetingName}}</h1>
+<!-- <h2>{{meetService.meeting.headings}}</h2> -->
+<span *ngFor="let heading of meetService.meeting.headings">
+    <h2>&emsp;{{heading.value}}</h2>
+    <span *ngFor="let subHeading of heading.subHeadings">
+        <br><h3>&emsp;&emsp;{{subHeading.value}}</h3>
+        <ul *ngFor="let point of subHeading.points">
+            <li>&emsp;&emsp;{{point.info}}</li>
+        </ul>
+</span>
+</span>

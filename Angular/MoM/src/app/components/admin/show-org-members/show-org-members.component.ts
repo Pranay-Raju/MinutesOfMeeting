@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
-import { MemberService } from 'src/app/services/member.service';
-import { UserService } from 'src/app/services/user.service';
-import { OrganizationService } from '../../../services/organization.service';
+import { MemberService } from 'src/app/services/org&users/member.service';
+import { UserService } from 'src/app/services/org&users/user.service';
+import { OrganizationService } from '../../../services/org&users/organization.service';
 
 declare var jQuery: any;
 

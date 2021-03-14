@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MeetingService } from 'src/app/services/meeting.service';
-import { OrganizationService } from 'src/app/services/organization.service';
+import { Router } from '@angular/router';
+import { MeetingService } from 'src/app/services/meeting&minutes/meeting.service';
+import { OrganizationService } from 'src/app/services/org&users/organization.service';
 
 declare var jQuery: any;
 
@@ -14,70 +15,19 @@ export class ShowOrgMeetingsComponent implements OnInit {
   editMeeting: any;
   editFlag: boolean;
   createFlag: boolean;
+  faci: any;
 
-  constructor(public meetingService: MeetingService, public orgService: OrganizationService) {
+  constructor(public meetingService: MeetingService, public orgService: OrganizationService, public router: Router) {
     this.editFlag = false;
     this.createFlag = false;
     this.meetings = [];
-    //     {
-    //       "id": 3,
-    //       "meetingName": "Work Plan for Day2",
-    //       "organizationName": "Talent Sprint",
-    //       "facilitator": {
-    //           "memberId": 3,
-    //           "name": "Gayathri",
-    //           "organizationName": "Talent Sprint",
-    //           "mobileNo": null,
-    //           "role": "facilitator",
-    //           "address": "",
-    //           "gender": "",
-    //           "loginId": "gaya123",
-    //           "password": "password"
-    //       },
-    //       "startDateAndTime": null,
-    //       "endDateAndTime": null,
-    //       "attendees": [],
-    //       "headings": []
-    //   },
-    //   {
-    //     "id": 3,
-    //     "meetingName": "Work Plan for Day3",
-    //     "organizationName": "Talent Sprint",
-    //     "facilitator": {
-    //         "memberId": 3,
-    //         "name": "Navya",
-    //         "organizationName": "Talent Sprint",
-    //         "mobileNo": null,
-    //         "role": "facilitator",
-    //         "address": "",
-    //         "gender": "",
-    //         "loginId": "gaya123",
-    //         "password": "password"
-    //     },
-    //     "startDateAndTime": null,
-    //     "endDateAndTime": null,
-    //     "attendees": [],
-    //     "headings": []
-    // }
-    // { meetingId: 1, meetingName: 'Project', facilitator: 'harsha', startDateAndTime: '12Feb 8:00Am', endDateAndTime: '12Feb 9:00Am' },
-    // { meetingId: 2, meetingName: 'Navya', facilitator: 'pasha', startDateAndTime: '12Feb 9:00Am', endDateAndTime: '12Feb 10:00Am' },
-    // { meetingId: 3, meetingName: 'lavanya', facilitator: 'pranay', startDateAndTime: '13Feb 8:00Am', endDateAndTime: '13Feb 9:00Am' },
-    // { meetingId: 4, meetingName: 'Tejaswini', facilitator: 'harsha', startDateAndTime: '14Feb 8:00Am', endDateAndTime: '14Feb 9:00Am' },
-    // { meetingId: 5, meetingName: 'Rakesh', facilitator: 'rakesh', startDateAndTime: '15Feb 8:00Am', endDateAndTime: '15Feb 9:00Am' },
-    // { meetingId: 6, meetingName: 'pranay', facilitator: 'harsha', startDateAndTime: '16Feb 8:00Am', endDateAndTime: '16Feb 9:00Am' }
-    // ]
     this.editMeeting = {
-      meetingId: '', meetingName: '', facilitator: {
-        "address": "",
-        "gender": "",
-        "loginId": "gaya123",
-        "memberId": 3,
-        "mobileNo": null,
-        "name": "Gayathri",
-        "organizationName": "Talent Sprint",
-        "password": "password",
-        "role": "facilitator"
-      }, startDateAndTime: '', endDateAndTime: ''
+      meetingId: '',
+      name: '',
+      facilitator: '',
+      facilitatorName: '',
+      startDateAndTime: '',
+      endDateAndTime: ''
     };
 
   }
@@ -92,8 +42,8 @@ export class ShowOrgMeetingsComponent implements OnInit {
     console.log(t);
     this.meetings = t;
     t = await this.orgService.getFacilitators();
-    console.log("Facilitators are ");
-    console.log(t);
+    // console.log("Facilitators are ");
+    // console.log(t);
     this.meetingService.setFacilitators(t);
   }
 
@@ -103,16 +53,65 @@ export class ShowOrgMeetingsComponent implements OnInit {
     this.createFlag = false;
     jQuery('#empModel').modal('show');
   }
-  deleteMeeting(meeting: any) {
-
+  async deleteMeeting(meeting: any) {
+    console.log("deleting the meeting " + JSON.stringify(meeting));
+    var t = await this.meetingService.deleteMeeting(meeting).toPromise();
+    this.loadMeetings();
   }
-  updateMeeting(meeting: any) {
+  async createMeeting(meeting: any) {
     console.log(meeting);
+    console.log(JSON.stringify(meeting.facilitator));
+    var k: any;
+    for (const iterator of this.meetingService.facilitators) {
+      // console.log("iterator is " + iterator + "");
+      if (iterator.name === meeting.facilitatorName) {
+        k = iterator;
+        // console.log("element is " + iterator);
+      }
+    }
+    // console.log("k is " + JSON.stringify(k));
+    meeting.facilitator = k;
+    meeting.organization = this.orgService.organizationDetails;
+    console.log(meeting);
+    var t = await this.meetingService.createMeeting(meeting).toPromise();
+    console.log(t);
+    this.loadMeetings();
+  }
+
+  async updateMeeting(meeting: any) {
+    console.log(meeting);
+    console.log(JSON.stringify(meeting.facilitator));
+    var k: any;
+    for (const iterator of this.meetingService.facilitators) {
+      // console.log("iterator is " + iterator + "");
+      if (iterator.name === meeting.facilitatorName) {
+        k = iterator;
+        // console.log("element is " + iterator);
+      }
+    }
+    // console.log("k is " + JSON.stringify(k));
+    meeting.facilitator = k;
+    meeting.organization = this.orgService.organizationDetails;
+    console.log(meeting);
+    var t = await this.meetingService.updateMeeting(meeting).toPromise();
+    console.log(t);
+    this.loadMeetings();
   }
   newMeeting() {
     this.createFlag = true;
     this.editFlag = false;
     jQuery('#empModel').modal('show');
+  }
+
+  editMinutes(meeting: any) {
+    this.meetingService.meeting = meeting;
+    console.log(meeting);
+    this.router.navigate(['showHeadings']);
+  }
+  viewMinutes(meeting: any) {
+    this.meetingService.meeting = meeting;
+    console.log(meeting);
+    this.router.navigate(['mom']);
   }
 
 }

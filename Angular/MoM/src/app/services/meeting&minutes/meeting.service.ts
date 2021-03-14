@@ -17,11 +17,20 @@ export class MeetingService {
   }
 
   createMeeting(meeting: any) {
-    this.httpClient.post("meetingForm/save", meeting);
+    return this.httpClient.post("meetingForm/save", meeting);
+  }
+
+  updateMeeting(meeting: any) {
+    return this.httpClient.post("meetingForm/update", meeting);
   }
 
   getMeetings(id: number) {
     return this.httpClient.get("meeting/byOrgId/" + id);
+  }
+
+  deleteMeeting(meeting:any){
+    // this.httpClient.delete("meeting/",meeting);
+    return this.httpClient.get("deleteMeeting/" + meeting.id);
   }
 
   getFacilitators() {
@@ -31,6 +40,5 @@ export class MeetingService {
   setFacilitators(facilitators: any) {
     this.facilitators = facilitators;
   }
-
 
 }

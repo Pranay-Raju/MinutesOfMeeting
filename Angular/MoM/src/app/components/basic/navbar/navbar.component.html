@@ -28,15 +28,22 @@
             <li class="nav-item" *ngIf="(service.userRole === 'admin') || (service.userRole === 'facilitator')">
                 <a class="nav-link" routerLink="showMeetings">Show Meetings</a>
             </li>
-            <li class="nav-item" *ngIf="(service.userRole === 'admin') || (service.userRole === 'facilitator') || (service.userRole === 'member')">
+            <!-- <li class="nav-item" *ngIf="(service.userRole === 'admin') || (service.userRole === 'facilitator') || (service.userRole === 'member')">
                 <a class="nav-link" routerLink="showHeadings">Show Headings</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link">{{service.user.name}}</a>
+            <li class="nav-item" *ngIf="(service.userRole === 'admin') || (service.userRole === 'facilitator') || (service.userRole === 'member')">
+                <a class="nav-link" routerLink="mom">Show Mom</a>
+            </li> -->
+
+
+
+
+        </ul>
+        <ul class="navbar-nav  topnav-right">
+            <li class="nav-item ">
+                <a class="nav-link topnav-right">{{service.user.name}}</a>
             </li>
-
-
         </ul>
     </div>
 </nav>
